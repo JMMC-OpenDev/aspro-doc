@@ -11,15 +11,15 @@
 # ASPRO 2 User Manual
 
 
-Date: September 19th 2023
+Date: September 26th 2023
 
 Authors:
 -   Laurent BOURGES — JMMC / OSUG
 -   Gilles DUVERT — JMMC / IPAG
 -   Guillaume MELLA — JMMC/ OSUG
 
-> [!WARNING]
-> **Documentation updates in progress**
+> [!NOTE]
+> **Documentation updates done**
 
 
 Revisions:
