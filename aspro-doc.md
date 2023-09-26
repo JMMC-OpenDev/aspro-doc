@@ -61,7 +61,10 @@ Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
 
 
 ## Table of contents
+
 <!--toc-->
+- [ASPRO 2 User Manual](#aspro-2-user-manual)
+    * [Table of contents](#table-of-contents)
     * [Description](#description)
     * [Supported interferometers and instruments](#supported-interferometers-and-instruments)
     * [Main functionalities](#main-functionalities)
@@ -107,7 +110,7 @@ Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
         * [ASPRO 2 - Export targets to VO Tools](#aspro-2---export-targets-to-vo-tools)
         * [ASPRO 2 - Import targets from VO Tools](#aspro-2---import-targets-from-vo-tools)
         * [ASPRO 2 - Import FITS image from VO Tools](#aspro-2---import-fits-image-from-vo-tools)
-- [Support and change requests](#support-and-change-requests)
+    * [Support and change requests](#support-and-change-requests)
     * [Sample files](#sample-files)
 
 <!-- tocstop -->
@@ -1277,7 +1280,7 @@ ASPRO 2 supports the standard 'image.load.fits' SAMP message to import one FITS 
 As described in the [User Model](#user-defined-model) section, the FITS image or cube must provide mandatory keywords (increments, units...) to be compatible in terms of spatial and spectral resolution with the observation setup (instrument, baselines).
 
 
-# Support and change requests
+## Support and change requests
 Please do not hesitate to use the JMMC Feedback Report integrated using `Help` menu / `Report Feedback to JMMC...` action:
 ![Aspro2-FeebackReport.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-FeebackReport.png)
 
