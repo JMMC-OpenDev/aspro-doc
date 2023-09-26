@@ -3,7 +3,7 @@
 
 
   
-[![ASPRO 2 Logo](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2.png)](http://www.jmmc.fr/aspro)
+[![ASPRO 2 Logo](https://github.com/JMMC-OpenDev/aspro/blob/master/src/Aspro2.png)](http://www.jmmc.fr/aspro)
 
 
 
@@ -219,7 +219,7 @@ An internet connection is required to use Java Web Start and get the latest rele
 Of course, both Java Web Start and ASPRO 2 support offline mode i.e. ASPRO 2 can work without any internet connection.
 
 Once downloaded, you should have a shortcut icon "Aspro 2" on your desktop:
-![ASPRO 2 Icon](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-icon.png)
+![ASPRO 2 Icon](images/Aspro2-icon.png)
 
 Alternatively you can start it again later using the Java Web Start Viewer and click on "Aspro 2":
 ```
@@ -281,7 +281,7 @@ Besides the `File` / `Open Recent` menu lists up to 10 recent observation settin
 
 ### Main observation settings
 The main panel is always present at the top of the application window to let you define main observation settings:
-![Main Panel](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-main.png)
+![Main Panel](images/Aspro2-main.png)
 
 This panel is divided in four parts:
 -   [Targets](#target-definition): add / remove / edit your targets
@@ -322,7 +322,7 @@ Target [A](ra, dec) too close to Target [B ](ra, dec): ... arcsec.
 ```
 
 > [!NOTE]
-> As a convention, we will use the terms "science target" [![science target](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/target.png)] and "calibrator target" [![calibrator target](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/calibrator.png)] in this document. ASPRO 2 uses icons to represent this distinction in the graphical user interface and calibrator targets are displayed with the suffix "(cal)".
+> As a convention, we will use the terms "science target" [![science target](images/target.png)] and "calibrator target" [![calibrator target](images/calibrator.png)] in this document. ASPRO 2 uses icons to represent this distinction in the graphical user interface and calibrator targets are displayed with the suffix "(cal)".
 
 The target list contains both science targets and calibrator targets. It uses the following rules to order targets:
 -   science targets followed by their calibrator targets
@@ -365,7 +365,7 @@ This panel let you define your main settings:
     -   Since ASPRO2 22.03, PoPs can be defined per station using the `Fixed` combo boxes (1 to 5 corresponds to PoP1 to 5, '-' means any PoP) that are used to restrict PoP values used by the "best PoP" algorithm. **Using Fixed PoPs allows to compare multiple configurations (or baseline limits) in a consistent manner**. Please use the button 'set' to copy the Current PoP combination and the button 'clear' to reset the Fixed PoP combo boxes.
     -   The `Current` PoP combination is displayed using the following format "Station(PoP number)..." and updated when the observability is computed.
 
-![Main Panel CHARA](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-main-chara.png)
+![Main Panel CHARA](images/Aspro2-main-chara.png)
 
 
 #### Configuration(s)
@@ -461,7 +461,7 @@ Future release will improve the way to select, filter and group targets.
 ### Interferometer sketch (Map tab)
 This zoomable plot shows the selected interferometer with all stations and selected base lines. Selected base lines are indicated with their lengths in the legend area.
 
-![Interferometer sketch](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-map.png)
+![Interferometer sketch](images/Aspro2-map.png)
 
 ### Observability tab
 
@@ -509,7 +509,7 @@ Colors are automatically associated to targets and their meaning is described in
 
 The selected target in the main target list is represented highlighted using a gradient (white to 'color') and the observability plot is automatically updated when the selected target changes.
 
-![Observability plot](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-obs.png)
+![Observability plot](images/Aspro2-obs.png)
 
 > [!NOTE]
 > - **Clicking on a target on the observability plot updates the selected target in the target list and refreshes [Observability](#observability-tab), [UV coverage](#uv-coverage-tab) and
@@ -526,18 +526,18 @@ The selected target in the main target list is represented highlighted using a g
 
 ASPRO 2 finds the best PoPs combination for the complete target list when the PoPs text field is empty. 
 The current PoPs combination is indicated in the `Current` label, in the plot title and in status indicator messages using the following format "Station(PoP number)...", as in the following image: 
-![Automatic PoPs"](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/popsAuto.png)
+![Automatic PoPs"](images/popsAuto.png)
 
 You can use the PoPs combo box to list best PoP combinations followed by up to good PoP combinations (descending order) and select one to see its impact on the observability of your complete target list.
 
 You can tell ASPRO 2 to use another PoPs combination by entering a valid PoPs code in the PoPs text widget ( "34" means PoP3 on S1 and PoP4 on S2), as in the following image: 
-![User PoPs](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/popsUser.png)
+![User PoPs](images/popsUser.png)
 
 To compare observability between 6T and 5T configurations, please use the `Fixed` PoPs combo boxes (and the `set` / `clear` actions) to associate PoPs with stations in a stable manner:
 -   once the best PoPs at 6T is found, use the `set` action to use it as Fixed values, as in the following image:
-![Auto PoPs 6T"](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/popsAuto-6T.png)
+![Auto PoPs 6T"](images/popsAuto-6T.png)
 -   you can then change the configuration (or select multiple ones) like a 5T configuration, as in the following image:
-![Fixed PoPs 5T](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/popsFixed-5T.png)
+![Fixed PoPs 5T](images/popsFixed-5T.png)
 
 The best PoPs algorithm has two different behaviour depending on your target list:
 -   single target: the best PoPs corresponds to the PoP combination maximizing the total observability interval (sum of each observability interval).
@@ -568,7 +568,7 @@ Several options can be defined in the [Preferences](#preferences) Window:
 <details>
 <summary>Show more details on the observability computation:</summary>
 
-![Observability detailed plot](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-obs-det.png)
+![Observability detailed plot](images/Aspro2-obs-det.png)
 
 The detailed observability plot shows each target multiple times (look at the legend area) to illustrate different aspects:
 -   Rise/Set intervals indicate when the target is above the chosen minimum elevation and respects the night restriction (if enabled)
@@ -583,7 +583,7 @@ The detailed observability plot shows each target multiple times (look at the le
 <details>
 <summary>Show base line limits for the selected configuration:</summary>
 
-![BaseLine Limits plot](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-obs-bl.png)
+![BaseLine Limits plot](images/Aspro2-obs-bl.png)
 
 This plot is useful to see telescope shadowing restrictions for the selected base lines on the VLTI and also the zenithal restriction.
 
@@ -607,7 +607,7 @@ Here are the rules for each interferometer:
 
 On the following screen shot, the target ETA TAU is not observable because it is too close to the moon (\~ 2.1 deg) at this particular date (2015/10/28).
 
-![Observability plot with moon avoidance](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-moon-obs-det.png)
+![Observability plot with moon avoidance](images/Aspro2-moon-obs-det.png)
 
 </details>
 
@@ -618,12 +618,12 @@ On the following screen shot, the target ETA TAU is not observable because it is
 
 When the `Wind` check box is enabled (night restriction should be enabled first), the compass widget is also enabled to let you enter the wind direction represented by the red arrow.
 
-![Observability plot with wind pointing restrictions](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-wind-obs.png)
+![Observability plot with wind pointing restrictions](images/Aspro2-wind-obs.png)
 
 On this screen shot, the wind direction is set to North - East (60 deg) and the target HD 1234 is impacted (telescopes can not be pointed to South - West).
 
 Here is the detailed observability plot in this case when the `Details` check box is then enabled:
-![Observability detailed plot with wind pointing restrictions](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-wind-obs-det.png)
+![Observability detailed plot with wind pointing restrictions](images/Aspro2-wind-obs-det.png)
 
 The observability interval related to Wind pointing restriction is represented in cyan color and is the limiting effect on the target HD 1234.
 
@@ -652,7 +652,7 @@ These UV measurements are using the observability range of the target expressed 
 
 On the following screen shot, the object model is an elliptical uniform disk which visibility amplitude is converted using a linear scale: 0.0 is indicated in black and the maximum (1.0 because fluxes are normalized) in white.
 
-![UV Coverage plot](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-uv.png)
+![UV Coverage plot](images/Aspro2-uv.png)
 
 > [!NOTE]
 > - Pointing an UV segment with your mouse displays a tooltip containing the information (configuration, baseline, current time / hour angle, UV radius and position angle).
@@ -725,10 +725,10 @@ The relevant parameters for each instrument are described in: [Latest Aspro Conf
 
 Data and errors are coming from the simulated OIFits file generated "on the fly" which can be exported using the `File` menu / `Export to OIFits file` action.
 
-![Vis2 / T3 plots with error bars](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-vis2-withErr.png)
+![Vis2 / T3 plots with error bars](images/Aspro2-vis2-withErr.png)
 
 > [!NOTE]
-> If errors can not be computed by the noise modelling (missing target magnitudes...), data points are then represented using a triangle shape and of course, error bars are not displayed: ![Vis2 / T3 plots without error bars](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-vis2-noErr.png)
+> If errors can not be computed by the noise modelling (missing target magnitudes...), data points are then represented using a triangle shape and of course, error bars are not displayed: ![Vis2 / T3 plots without error bars](images/Aspro2-vis2-noErr.png)
 
 > [!NOTE]
 > To enable / disable the OIFits computation or error noise, look at the [UV coverage](#uv-coverage-tab) panel.
@@ -770,7 +770,7 @@ To filter these data, the table panel provides (several) filters:
 This plot shows the observability plot of the target 'DoAr 44'.
 
 Past observation ranges of the GRAVITY instrument are displayed as an overlay in orange color:
-![Aspro2-rawobs-obs.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-rawobs-obs.png)
+![Aspro2-rawobs-obs.png](images/Aspro2-rawobs-obs.png)
 
 'V2062 Oph' and 'DoAr 44' are the same object in Simbad, even if the distance between the ASPRO2 target coordinates and the observation coordinates in the ESO archive is 8 as in this specific case.
 
@@ -781,7 +781,7 @@ Past observation ranges of the GRAVITY instrument are displayed as an overlay in
 #### UV Coverage plot
 
 This plot shows the UV coverage of the target 'DoAr 44'. Past observation UV points of the GRAVITY instrument are displayed (in the background) in orange color:
-![Aspro2-rawobs-uv.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-rawobs-uv.png)
+![Aspro2-rawobs-uv.png](images/Aspro2-rawobs-uv.png)
 
 > [!NOTE]
 > Tooltips are showing details about the pointed observation log.
@@ -805,11 +805,11 @@ To illustrate this feature, following configurations are selected to produce the
 
 #### Interferometer sketch
 This plot shows selected configurations and their related base lines:
-![Aspro2-multiConf-map.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-multiConf-map.png)
+![Aspro2-multiConf-map.png](images/Aspro2-multiConf-map.png)
 
 #### Observability plot
 This plot represents the observability intervals per target and configuration:
-![Aspro2-multiConf-obs.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-multiConf-obs.png)
+![Aspro2-multiConf-obs.png](images/Aspro2-multiConf-obs.png)
 
 > [!NOTE]
 > - Science and calibrator targets are represented using the same color; but names of calibrator targets have the "(cal)" suffix.
@@ -819,12 +819,12 @@ This plot represents the observability intervals per target and configuration:
 
 #### UV Coverage plot
 This plot shows the combined UV coverage of your target using selected configurations:
-![Aspro2-multiConf-uv.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-multiConf-uv.png)
+![Aspro2-multiConf-uv.png](images/Aspro2-multiConf-uv.png)
 
 
 #### OIFits viewer
 This plot shows the combined OIFits data of your target using selected configurations:
-![Aspro2-multiConf-oifitsViewer.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-multiConf-oifitsViewer.png)
+![Aspro2-multiConf-oifitsViewer.png](images/Aspro2-multiConf-oifitsViewer.png)
 
 
 ### Target Editor
@@ -840,8 +840,8 @@ The `Targets` panel allows you to edit target information and associate calibrat
 
 On the first screen shot, only science targets are present; on the second screen shot, science and calibrator targets are present:
 
-![Target editor with science targets only](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-Target.png)
-![Target editor with science and calibrator targets](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-Target.png)
+![Target editor with science targets only](images/Aspro2-Target.png)
+![Target editor with science and calibrator targets](images/Aspro2-calibrators-Target.png)
 
 In the tree view on the left, targets are shown using the following rule to order targets: science targets followed by their calibrator targets.
 
@@ -914,8 +914,8 @@ Each target can have its own object model composed of several elementary analyti
 
 On the first screen shot, only science targets and their models are present; on the second screen shot, science, calibrator targets and their models are present.
 
-![Model editor with science targets only](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-Model.png)
-![Model editor with science and calibrator targets](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-Model.png)
+![Model editor with science targets only](images/Aspro2-Model.png)
+![Model editor with science and calibrator targets](images/Aspro2-calibrators-Model.png)
 
 To add a new elementary model, choose first its `model type` and then click on the `Add` button.
 
@@ -938,7 +938,7 @@ The `Normalize fluxes` button corrects values of the flux_weight parameter to ha
 ##### User-defined model
 Each target can have an user-defined model using one FITS image (monochromatic model) or cube (polychromatic model) representing the object flux over the sky (i.e. X and Y axes corresponds respectively to RA and DEC coordinates) optionally per spectral channel for Fits cubes.
 
-![Target editor with an user-defined model](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-UserModel.png)
+![Target editor with an user-defined model](images/Aspro2-UserModel.png)
 
 To add or change an user model, click on the `Open` button and choose your FITS image or cube file (fits or fits.gz files are both supported).
 
@@ -950,7 +950,7 @@ The `Telescope FOV` indicates the overall field of view (telescope + spatial fil
 Click on the `AMHRA` button to open the [AMHRA](https://amhra.oca.eu/) service that provides several polychromatic science models as FITS image cubes that can be sent back to ASPRO2 using the SAMP interoperability ('image.load.fits' message).
 
 > [!NOTE]
-> Use the image browser widget to see all polychromatic images (Fits cube only): ![Image browser widget](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_animate_widget.png)
+> Use the image browser widget to see all polychromatic images (Fits cube only): ![Image browser widget](images/Aspro2_animate_widget.png)
 
 When your FITS image (or cube) is loaded (only the first image / cube present in the FITS file), several image processing tasks are performed to obtain a linear-flux image prepared for Fourier transform computations:
 1. compute its dynamic range 
@@ -963,7 +963,7 @@ When your FITS image (or cube) is loaded (only the first image / cube present in
 
 > [!NOTE]
 > - To preserve the model's integrity, rotation and scaling are performed on the visibilities only.
-> - The image or cube's flux unit are meaningless to ASPRO 2: the flux of the object (hence, the S/N of the computed visibilities) is always derived from the magnitude in the observation band given in the [Target Editor](#target-editor) and scaled by (Fi / Fm) for Fits cubes where Fm is the integrated flux(Fi) over the band / band width
+> - The FITS image (or cube) flux unit is meaningless to ASPRO 2: the flux of the object (hence, the S/N of the computed visibilities) is always derived from the magnitude in the observation band given in the [Target Editor](#target-editor) and scaled by (Fi / Fm) for Fits cubes where Fm is the integrated flux(Fi) over the band / band width
 
 The 5th task is only performed when the `Fast mode (optimize the input image)` is enabled in the Preferences Window: it consists in discarding useless data to have accurate but
 faster response time when computing optimized Fast (UV plane) or direct Fourier transform (simulated OIFits data).
@@ -1017,7 +1017,7 @@ CUNIT3 =              'MICRON' / Units along axis                              O
 
 For example, the following screen shot shows the UV coverage plot of the previous spiral user-defined model:
 
-![UV Coverage plot for HD 1234 (user model](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-UserModel-uv.png)
+![UV Coverage plot for HD 1234 (user model](images/Aspro2-UserModel-uv.png)
 
 
 ##### Polychromatic User-defined model
@@ -1049,9 +1049,12 @@ If Interpolation is enabled and 2 model images A and B exist where $\lambda_A \<
 
 With Interpolation, the visibility is a linear combination of Fourier transforms of the A and B normalized images.
 
+For Fits cubes, OI_FLUX's FLUXDATA / FLUXERR columns give the object flux and error (from the object magnitude) scaled by $\frac{Fi}{Fm}$ 
+where $Fm$ is the integrated flux $Fi$ over the band / band width:
+$$Fm = \frac{ \int_{\lambda_{Bmin}}^{\lambda_{Bmax}} Fi.\delta\lambda }{\lambda_{Bmax} - \lambda_{Bmin}}$$
+
 > [!NOTE]
 > - Interpolation and Extrapolation on user-models can be enabled / disabled in the [Preferences](#preferences) Window.
-> - For Fits cubes, OI_FLUX's FLUXDATA / FLUXERR columns give the object flux (from object magnitude) scaled by (Fi / Fm) for Fits cubes where Fm is the integrated flux (Fi) over the band / band width 
 
 
 #### Groups Tabbed Pane
@@ -1062,7 +1065,7 @@ The `Groups` panel allows you to Drag & Drop targets to define groups and associ
 -   Guide stars.
 
 In the following screenshot, 'Sirius B' uses the 'Sirius A' star for the AO sub-system:
-![Group AO](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-GroupAO.png)
+![Group AO](images/Aspro2-GroupAO.png)
 
 On the left side, all SCIENCE / CALIBRATOR targets are shown with their associated stars. On the middle tree panel, target Groups are shown with their corresponding stars; stars can belong to multiple groups. On the right side, target groups are displayed for the selected target (see checked boxes) and the group information is displayed for the selected
 group.
@@ -1080,7 +1083,7 @@ To create user-defined groups, use the `Add group` button and edit its name, des
 ### Preferences
 This window let you define several settings that are stored on your machine and will be loaded at application start up.
 
-![Preferences](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-prefs.png)
+![Preferences](images/Aspro2-prefs.png)
 
 Preferences are grouped by feature:
 -   [Observability](#observability-tab)
@@ -1104,8 +1107,8 @@ The JSkyCalc tool made by J. R. Thorstensen, Dartmouth College has one main wind
 > - All JSkyCalc windows are synchronized i.e. all plots / windows are refreshed if you add / remove a target or modify the current date / time.
 > - Closing the main window will close also all opened pop up windows
 
-![JSkyCalc main window](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-SkyCalcWindow.png)
-![JSkyCalc sky display](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-SkyDisplay.png)
+![JSkyCalc main window](images/Aspro2-SkyCalcWindow.png)
+![JSkyCalc sky display](images/Aspro2-SkyDisplay.png)
 
 Click on the `Help` button to open the JSkyCalc documentation page.
 
@@ -1133,17 +1136,17 @@ This communication has two aspects to it: on the one hand an application can sen
 ### SAMP in JMMC applications
 When a JMMC application starts, it will try to connect to an existing hub or start a new internal hub.
 
-The running hub is indicated by the ![science target](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/hub.png) system tray icon that provides following actions:
+The running hub is indicated by the ![science target](images/hub.png) system tray icon that provides following actions:
 -   use `Show Hub window` to see registered applications
 -   use `Stop Hub` to stop the hub and disable communications between applications (not recommended)
 
 Here is a screen shot of the hub status window:
-![Hub status window](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-interop-hubStatus.png)
+![Hub status window](images/Aspro2-interop-hubStatus.png)
 
 Anyway when the JMMC application is started, it will be ready to communicate with other JMMC (and VO) applications.
 
 JMMC applications have an `Interop` menu containing common actions followed by specific actions to send messages to other applications:
-![Interop menu](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-interop-menu.png)
+![Interop menu](images/Aspro2-interop-menu.png)
 
 Common actions are:
 -   `Register With Hub` action connects this application to the running hub; if no hub is running, a confirmation dialog asks you if you want to start an internal hub and connect to it.
@@ -1166,26 +1169,26 @@ How to find calibrators easily using SearchCal from ASPRO 2 ?
 
 Here is a step by step tutorial: 
 1. Start the SearchCal application (or it is already running) to be able to communicate with it: [SearchCal](http://apps.jmmc.fr/~sclws/SearchCal/SearchCal.jnlp)
-![Aspro2-calibrators-SearchCal-start.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-SearchCal-start.png)
+![Aspro2-calibrators-SearchCal-start.png](images/Aspro2-calibrators-SearchCal-start.png)
 1. In ASPRO 2, select your science target in the target list and use the `Search calibrators` action in the `Interop` menu to let ASPRO 2 send a message to SearchCal with your target information (coordinates, magnitudes), the instrument band and other parameters (maximum baseline length):
-![Aspro2-calibrators-StartSearchQuery.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-StartSearchQuery.png)
+![Aspro2-calibrators-StartSearchQuery.png](images/Aspro2-calibrators-StartSearchQuery.png)
 1. SearchCal interprets the ASPRO 2 message, updates its graphical user interface and sends the query immediately (please wait). When calibrators are found, they are filtered and displayed:
-![Aspro2-calibrators-SearchCal-results.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-SearchCal-results.png)
+![Aspro2-calibrators-SearchCal-results.png](images/Aspro2-calibrators-SearchCal-results.png)
 1. Select the calibrators you want or all displayed calibrators (i.e. filtered) will be sent to ASPRO 2. 
 1. Use the `Send calibrators to` action in the `Interop Menu` to let SearchCal send these calibrators to ASPRO 2:
-![Aspro2-calibrators-SearchCal-SendCalibrators.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-SearchCal-SendCalibrators.png)
+![Aspro2-calibrators-SearchCal-SendCalibrators.png](images/Aspro2-calibrators-SearchCal-SendCalibrators.png)
 1. ASPRO 2 processes the SearchCal message and displays an operation summary: 
-![Aspro2-calibrators-Summary.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-Summary.png)
+![Aspro2-calibrators-Summary.png](images/Aspro2-calibrators-Summary.png)
 1. That's all: ASPRO 2 has updated the target list with SearchCal calibrators, created an uniform disk model for every calibrator target using the SearchCal diameter corresponding to the instrument band (UD_ fields) and the graphical user interface is updated:
 
 -   Observability plot: 
     calibrators are represented in blue and are located below their related science target:
-![Aspro2-calibrators-obs.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-obs.png)
+![Aspro2-calibrators-obs.png](images/Aspro2-calibrators-obs.png)
 -   UV Coverage plot for a SearchCal calibrator target:
-![Aspro2-calibrators-uv.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-uv.png)
+![Aspro2-calibrators-uv.png](images/Aspro2-calibrators-uv.png)
 -   Target editor with calibrators:
-![Target editor with science and calibrator targets](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-Target.png)
-![Model editor with science and calibrator targets](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-calibrators-Model.png)
+![Target editor with science and calibrator targets](images/Aspro2-calibrators-Target.png)
+![Model editor with science and calibrator targets](images/Aspro2-calibrators-Model.png)
 
 > [!NOTE]
 > - If you choose another instrument or instrument mode (i.e. instrument band), SearchCal calibrators may become inappropriate. Look at the UV Coverage plot to verify that one calibrator target is still a "good" calibrator for your observation.
@@ -1203,18 +1206,18 @@ How to prepare easily your model fitting using LITpro from ASPRO 2 ?
 
 Here is a step by step tutorial:
 1. Start the LITpro application (or it is already running) to be able to communicate with it: [LITpro](http://jmmc.fr/~swmgr/LITpro/LITpro.jnlp)
-![Aspro2-LITpro-start.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-LITpro-start.png)
+![Aspro2-LITpro-start.png](images/Aspro2-LITpro-start.png)
 1. In ASPRO 2, select your target in the target list and use the `Perform model fitting` action in the `Interop` menu to let ASPRO 2 send a message to LITpro with your simulated OIFits file and target information (with object model) as shown on the UV Coverage plot:
-![Aspro2-LITpro-send.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-LITpro-send.png)
+![Aspro2-LITpro-send.png](images/Aspro2-LITpro-send.png)
 1. LITpro interprets the ASPRO 2 message, loads the OIFits file and displays the OIFits validation summary:
-![Aspro2-LITpro-summary.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-LITpro-summary.png)
+![Aspro2-LITpro-summary.png](images/Aspro2-LITpro-summary.png)
 1. That's all: LITpro has now updated the graphical interface with the new created settings including the OIFits file and the target with its object model:
-![Aspro2-LITpro-settings.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-LITpro-settings.png)
+![Aspro2-LITpro-settings.png](images/Aspro2-LITpro-settings.png)
 
 -   LITpro shows the content summary of OIFits files:
-![Aspro2-LITpro-settings-File.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-LITpro-settings-File.png)
+![Aspro2-LITpro-settings-File.png](images/Aspro2-LITpro-settings-File.png)
 -   LITpro can also plot any data table (OI_VIS, OI_VIS2, OI_T3):
-![Aspro2-LITpro-settings-Vis2.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-LITpro-settings-Vis2.png)
+![Aspro2-LITpro-settings-Vis2.png](images/Aspro2-LITpro-settings-Vis2.png)
 
 
 ### ASPRO 2 / OIFits Explorer
@@ -1271,7 +1274,7 @@ Supported data columns are listed in the following table:
 > [!NOTE]
 > Only Name and coordinates (RA/DEC) are mandatory. Supported identifiers must use correct column names (HD, HIP, 2MASS).
 
-Here is a sample VOTable file describing all possible parameters and columns: [Aspro2_samp_load_votable.xml](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_samp_load_votable.xml): Aspro2 Sample Target list (VOTable)
+Here is a sample VOTable file describing all possible parameters and columns: [Aspro2_samp_load_votable.xml](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/pivot/Aspro2_samp_load_votable.xml): Aspro2 Sample Target list (VOTable)
 
 
 ### ASPRO 2 - Import FITS image from VO Tools
@@ -1282,7 +1285,7 @@ As described in the [User Model](#user-defined-model) section, the FITS image or
 
 ## Support and change requests
 Please do not hesitate to use the JMMC Feedback Report integrated using `Help` menu / `Report Feedback to JMMC...` action:
-![Aspro2-FeebackReport.png](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2-FeebackReport.png)
+![Aspro2-FeebackReport.png](images/Aspro2-FeebackReport.png)
 
 Of course, you can still contact the [user support team](http://www.jmmc.fr/support.htm) for any bug report or change request.
 
@@ -1292,31 +1295,27 @@ Of course, you can still contact the [user support team](http://www.jmmc.fr/supp
 
 ## Sample files
 Here are the "Guided Tour" Observation files that can be loaded in ASPRO 2 / SearchCal / LITpro for demonstration purposes:
--   [Aspro2_sample.asprox](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_sample.asprox): Sample observation file
--   [Aspro2_sample_multi.asprox](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_sample_multi.asprox): Sample observation file (multi configuration)
--   [Aspro2_sample_with_calibrators.asprox](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_sample_with_calibrators.asprox): Sample observation file completed with SearchCal calibrators for HIP 1234
--   [SearchCal-hip1234.scvot](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/SearchCal-hip1234.scvot): SearchCal VOTable for HIP 1234
--   [LITpro-hd1234.litprox](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/LITpro-hd1234.litprox): LITpro Settings for HD 1234
-
-Here is a sample VOTable file:
--   [Aspro2_samp_load_votable.xml](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_samp_load_votable.xml): Aspro2 Sample Target list (VOTable)
+-   [Aspro2_sample.asprox](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/Aspro2_sample.asprox): Sample observation file
+-   [Aspro2_sample_multi.asprox](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/Aspro2_sample_multi.asprox): Sample observation file (multi configuration)
+-   [Aspro2_sample_with_calibrators.asprox](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/Aspro2_sample_with_calibrators.asprox): Sample observation file completed with SearchCal calibrators for HIP 1234
+-   [SearchCal-hip1234.scvot](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/SearchCal-hip1234.scvot): SearchCal VOTable for HIP 1234
+-   [LITpro-hd1234.litprox](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/LITpro-hd1234.litprox): LITpro Settings for HD 1234
 
 Sample files (VLTI Period 96):
 -   Here are sample PDF files:
     -   single configuration:
-        -   [MAP_VLTI_Period_96_K0-G2-D0.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/MAP_VLTI_Period_96_K0-G2-D0.pdf): interferometer map
-        -   [OBS_AMBER_K0-G2-D0_2015-10-28.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/OBS_AMBER_K0-G2-D0_2015-10-28.pdf): observability plot
-        -   [UV_HIP1234_AMBER_K0-G2-D0_2015-10-28.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/UV_HIP1234_AMBER_K0-G2-D0_2015-10-28.pdf): UV coverage plot for HIP 1234
-        -   [UV_HD_1234_AMBER_B2-D0-C1_2015-10-28.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/UV_HD_1234_AMBER_B2-D0-C1_2015-10-28.pdf): UV coverage plot for HD 1234 (user model)
-        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf): Vis2 / T3 plots for HIP 1234
-        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HD_1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HD_1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf): Vis2 / T3 plots for HD 1234
+        -   [MAP_VLTI_Period_96_K0-G2-D0.pdf](outputs/MAP_VLTI_Period_96_K0-G2-D0.pdf): interferometer map
+        -   [OBS_AMBER_K0-G2-D0_2015-10-28.pdf](outputs/OBS_AMBER_K0-G2-D0_2015-10-28.pdf): observability plot
+        -   [UV_HIP1234_AMBER_K0-G2-D0_2015-10-28.pdf](outputs/UV_HIP1234_AMBER_K0-G2-D0_2015-10-28.pdf): UV coverage plot for HIP 1234
+        -   [UV_HD_1234_AMBER_B2-D0-C1_2015-10-28.pdf](outputs/UV_HD_1234_AMBER_B2-D0-C1_2015-10-28.pdf): UV coverage plot for HD 1234 (user model)
+        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf](outputs/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf): Vis2 / T3 plots for HIP 1234
+        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HD_1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf](outputs/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HD_1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf): Vis2 / T3 plots for HD 1234
     -   multi configuration:
-        -   [MAP_VLTI_Period_96_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/MAP_VLTI_Period_96_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0.pdf): interferometer map
-        -   [OBS_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/OBS_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf): observability plot
-        -   [UV_HIP1234_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/UV_HIP1234_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf): UV coverage plot
-        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_B2-C1-D0_D0-G2-K0_UT1-UT2-UT3_2015-10-29.pdf](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_B2-C1-D0_D0-G2-K0_UT1-UT2-UT3_2015-10-29.pdf): Vis2 / T3 plots for HIP 1234
+        -   [MAP_VLTI_Period_96_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0.pdf](outputs/MAP_VLTI_Period_96_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0.pdf): interferometer map
+        -   [OBS_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf](outputs/OBS_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf): observability plot
+        -   [UV_HIP1234_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf](outputs/UV_HIP1234_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf): UV coverage plot
+        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_B2-C1-D0_D0-G2-K0_UT1-UT2-UT3_2015-10-29.pdf](outputs/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_B2-C1-D0_D0-G2-K0_UT1-UT2-UT3_2015-10-29.pdf): Vis2 / T3 plots for HIP 1234
 
 -   Here are sample OIFits files:
-    -   [Aspro2_HIP1234_AMBER_1\_48347-2_52552-37ch_D0-G2-K0_2015-10-29.fits](http://www.jmmc.fr/twiki/pub/Jmmc/Software/JmmcAspro2/Aspro2_HIP1234_AMBER_1_48347-2_52552-37ch_D0-G2-K0_2015-10-29.fits): OIFits file for HIP 1234
-
+    -   [Aspro2_HIP1234_AMBER_1\_48347-2_52552-37ch_D0-G2-K0_2015-10-29.fits](outputs/Aspro2_HIP1234_AMBER_1_48347-2_52552-37ch_D0-G2-K0_2015-10-29.fits): OIFits file for HIP 1234
 
