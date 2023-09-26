@@ -728,7 +728,9 @@ Data and errors are coming from the simulated OIFits file generated "on the fly"
 ![Vis2 / T3 plots with error bars](images/Aspro2-vis2-withErr.png)
 
 > [!NOTE]
-> If errors can not be computed by the noise modelling (missing target magnitudes...), data points are then represented using a triangle shape and of course, error bars are not displayed: ![Vis2 / T3 plots without error bars](images/Aspro2-vis2-noErr.png)
+> If errors can not be computed by the noise modelling (missing target magnitudes...), data points are then represented using a triangle shape and of course, error bars are not displayed:
+
+![Vis2 / T3 plots without error bars](images/Aspro2-vis2-noErr.png)
 
 > [!NOTE]
 > To enable / disable the OIFits computation or error noise, look at the [UV coverage](#uv-coverage-tab) panel.
