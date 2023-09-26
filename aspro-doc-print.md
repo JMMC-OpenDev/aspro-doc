@@ -23,8 +23,8 @@ Authors:
 
 
 Revisions:
-<details>
-<summary>Show all revisions:</summary>
+
+<p>Show all revisions:</p>
 
 -   ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 -   ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
@@ -54,7 +54,7 @@ Revisions:
 -   ASPRO 2 version 0.7 (February 2011): added Target editor / calibrator support / interoperability with LITpro and SearchCal
 -   ASPRO 2 version 0.6 (September 2010): added OIFits support
 -   ASPRO 2 version 0.5 (June 2010): initial ASPRO2 public release
-</details>
+
 
 
 Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
@@ -521,8 +521,8 @@ The selected target in the main target list is represented highlighted using a g
 > - Please set correctly your date / time settings on your machine (operating system) to let the time marker work properly.
 
 
-<details>
-<summary>Show more details on the PoPs configuration and best PoPs algorithms:</summary>
+
+<p>Show more details on the PoPs configuration and best PoPs algorithms:</p>
 
 ASPRO 2 finds the best PoPs combination for the complete target list when the PoPs text field is empty. 
 The current PoPs combination is indicated in the `Current` label, in the plot title and in status indicator messages using the following format "Station(PoP number)...", as in the following image: 
@@ -562,11 +562,11 @@ Several options can be defined in the [Preferences](#preferences) Window:
 -   `Gaussian sigma` (Transit and HALimits only) to adjust the selectivity of the normal law (transit or HA range confidence)
 -   `Average weight % Min` to adjust the importance of the shortest observability interval (min) compared to the average observability interval for your complete target list
 
-</details>
 
 
-<details>
-<summary>Show more details on the observability computation:</summary>
+
+
+<p>Show more details on the observability computation:</p>
 
 ![Observability detailed plot](images/Aspro2-obs-det.png)
 
@@ -577,21 +577,21 @@ The detailed observability plot shows each target multiple times (look at the le
 -   Wind intervals indicate when the target is not affected by pointing restrictions due to the wind direction (azimuth)
 -   Individual Base line intervals indicate when delay lines can compensate the optical path difference between two stations
 
-</details>
 
 
-<details>
-<summary>Show base line limits for the selected configuration:</summary>
+
+
+<p>Show base line limits for the selected configuration:</p>
 
 ![BaseLine Limits plot](images/Aspro2-obs-bl.png)
 
 This plot is useful to see telescope shadowing restrictions for the selected base lines on the VLTI and also the zenithal restriction.
 
-</details>
 
 
-<details>
-<summary>Show more details on the moon avoidance:</summary>
+
+
+<p>Show more details on the moon avoidance:</p>
 
 ASPRO 2 determine the moon separation with every target **during the rise / set interval** only.
 
@@ -609,12 +609,12 @@ On the following screen shot, the target ETA TAU is not observable because it is
 
 ![Observability plot with moon avoidance](images/Aspro2-moon-obs-det.png)
 
-</details>
+
 
 
 <a name="VLTI_wind_direction"></a>
-<details>
-<summary>Show more details on entering the VLTI wind direction:</summary>
+
+<p>Show more details on entering the VLTI wind direction:</p>
 
 When the `Wind` check box is enabled (night restriction should be enabled first), the compass widget is also enabled to let you enter the wind direction represented by the red arrow.
 
@@ -627,7 +627,7 @@ Here is the detailed observability plot in this case when the `Details` check bo
 
 The observability interval related to Wind pointing restriction is represented in cyan color and is the limiting effect on the target HD 1234.
 
-</details>
+
 
 
 ### UV coverage tab
