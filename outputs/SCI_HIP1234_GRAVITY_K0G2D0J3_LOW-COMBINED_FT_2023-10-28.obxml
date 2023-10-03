@@ -4,20 +4,21 @@
     <name>default</name>
     <interferometerConfiguration>
         <name>VLTI</name>
-        <version>Period 96</version>
-        <stations>K0 G2 D0</stations>
+        <version>Period 112</version>
+        <stations>K0 G2 D0 J3</stations>
+        <confAltName>medium</confAltName>
         <pops></pops>
-        <channels>IP1 IP3 IP5 </channels>
+        <channels>IP1 IP3 IP5 IP7 </channels>
         <aoSetup>NAOMI_BRIGHT</aoSetup>
     </interferometerConfiguration>
     <instrumentConfiguration>
-        <name>AMBER</name>
-        <instrumentMode>Low_JHK</instrumentMode>
-        <dit>0.1</dit>
-        <acquisitionTime>300.0</acquisitionTime>
-        <instrumentWaveLengthRef>2.233</instrumentWaveLengthRef>
-        <instrumentWaveBandRef>0.614</instrumentWaveBandRef>
-        <fringeTrackerMode>NONE</fringeTrackerMode>
+        <name>GRAVITY</name>
+        <instrumentMode>LOW-COMBINED</instrumentMode>
+        <dit>60.0</dit>
+        <acquisitionTime>600.0</acquisitionTime>
+        <instrumentWaveLengthRef>2.2</instrumentWaveLengthRef>
+        <instrumentWaveBandRef>0.5</instrumentWaveBandRef>
+        <fringeTrackerMode>FringeTrack GRAVITY</fringeTrackerMode>
     </instrumentConfiguration>
     <observationConfiguration id="HIP1234">
         <type>SCIENCE</type>
@@ -44,8 +45,8 @@
             <atmosphereQuality>Good</atmosphereQuality>
             <seeing>0.7</seeing>
             <tau0>0.0044</tau0>
-            <HAinterval>-1.91/0.67</HAinterval>
-            <LSTinterval>22:21/00:56</LSTinterval>
+            <HAinterval>-1.21/0.67</HAinterval>
+            <LSTinterval>23:04/00:56</LSTinterval>
         </observationConstraints>
     </observationConfiguration>
     <observationSchedule>

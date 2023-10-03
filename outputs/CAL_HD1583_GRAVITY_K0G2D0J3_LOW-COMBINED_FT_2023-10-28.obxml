@@ -4,20 +4,21 @@
     <name>default</name>
     <interferometerConfiguration>
         <name>VLTI</name>
-        <version>Period 106</version>
+        <version>Period 112</version>
         <stations>K0 G2 D0 J3</stations>
         <confAltName>medium</confAltName>
         <pops></pops>
         <channels>IP1 IP3 IP5 IP7 </channels>
+        <aoSetup>NAOMI_BRIGHT</aoSetup>
     </interferometerConfiguration>
     <instrumentConfiguration>
         <name>GRAVITY</name>
         <instrumentMode>LOW-COMBINED</instrumentMode>
-        <dit>0.3</dit>
+        <dit>60.0</dit>
         <acquisitionTime>600.0</acquisitionTime>
         <instrumentWaveLengthRef>2.2</instrumentWaveLengthRef>
         <instrumentWaveBandRef>0.5</instrumentWaveBandRef>
-        <fringeTrackerMode>NONE</fringeTrackerMode>
+        <fringeTrackerMode>FringeTrack GRAVITY</fringeTrackerMode>
     </instrumentConfiguration>
     <observationConfiguration id="HD_1583">
         <type>CALIBRATION</type>
@@ -150,11 +151,11 @@
             </EXTRA_INFORMATIONS>
         </SCTarget>
         <observationConstraints>
-            <atmosphereQuality>Average</atmosphereQuality>
-            <seeing>1.0</seeing>
-            <tau0>0.0032</tau0>
-            <HAinterval>-1.11/0.79</HAinterval>
-            <LSTinterval>23:14/01:08</LSTinterval>
+            <atmosphereQuality>Good</atmosphereQuality>
+            <seeing>0.7</seeing>
+            <tau0>0.0044</tau0>
+            <HAinterval>-1.11/0.80</HAinterval>
+            <LSTinterval>23:15/01:09</LSTinterval>
         </observationConstraints>
     </observationConfiguration>
     <observationSchedule>
