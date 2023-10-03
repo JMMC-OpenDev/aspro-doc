@@ -1303,21 +1303,5 @@ Here are the "Guided Tour" Observation files that can be loaded in ASPRO 2 / Sea
 -   [SearchCal-hip1234.scvot](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/SearchCal-hip1234.scvot): SearchCal VOTable for HIP 1234
 -   [LITpro-hd1234.litprox](https://github.com/JMMC-OpenDev/aspro/blob/master/src/test/resources/LITpro-hd1234.litprox): LITpro Settings for HD 1234
 
-Sample files (VLTI Period 96):
--   Here are sample PDF files:
-    -   single configuration:
-        -   [MAP_VLTI_Period_96_K0-G2-D0.pdf](outputs/MAP_VLTI_Period_96_K0-G2-D0.pdf): interferometer map
-        -   [OBS_AMBER_K0-G2-D0_2015-10-28.pdf](outputs/OBS_AMBER_K0-G2-D0_2015-10-28.pdf): observability plot
-        -   [UV_HIP1234_AMBER_K0-G2-D0_2015-10-28.pdf](outputs/UV_HIP1234_AMBER_K0-G2-D0_2015-10-28.pdf): UV coverage plot for HIP 1234
-        -   [UV_HD_1234_AMBER_B2-D0-C1_2015-10-28.pdf](outputs/UV_HD_1234_AMBER_B2-D0-C1_2015-10-28.pdf): UV coverage plot for HD 1234 (user model)
-        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf](outputs/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf): Vis2 / T3 plots for HIP 1234
-        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HD_1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf](outputs/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HD_1234_VLTI_AMBER_D0-G2-K0_2015-10-29.pdf): Vis2 / T3 plots for HD 1234
-    -   multi configuration:
-        -   [MAP_VLTI_Period_96_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0.pdf](outputs/MAP_VLTI_Period_96_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0.pdf): interferometer map
-        -   [OBS_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf](outputs/OBS_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf): observability plot
-        -   [UV_HIP1234_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf](outputs/UV_HIP1234_AMBER_UT1-UT2-UT3_B2-D0-C1_K0-G2-D0_2015-10-28.pdf): UV coverage plot
-        -   [VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_B2-C1-D0_D0-G2-K0_UT1-UT2-UT3_2015-10-29.pdf](outputs/VIS2DATA_T3PHI_vs_SPATIAL_FREQ_HIP1234_VLTI_AMBER_B2-C1-D0_D0-G2-K0_UT1-UT2-UT3_2015-10-29.pdf): Vis2 / T3 plots for HIP 1234
-
--   Here are sample OIFits files:
-    -   [Aspro2_HIP1234_VLTI_AMBER_1.94215-2.52384-19ch_D0-G2-K0_2015-10-29.fits](outputs/Aspro2_HIP1234_VLTI_AMBER_1.94215-2.52384-19ch_D0-G2-K0_2015-10-29.fits): OIFits file for HIP 1234
+The following folder gives sample output files (PDF, OIFITS files): [outputs](outputs/)
 
