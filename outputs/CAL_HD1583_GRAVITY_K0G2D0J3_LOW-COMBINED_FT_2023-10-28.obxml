@@ -14,10 +14,10 @@
     <instrumentConfiguration>
         <name>GRAVITY</name>
         <instrumentMode>LOW-COMBINED</instrumentMode>
-        <dit>60.0</dit>
+        <dit>100.0</dit>
         <acquisitionTime>600.0</acquisitionTime>
         <instrumentWaveLengthRef>2.2</instrumentWaveLengthRef>
-        <instrumentWaveBandRef>0.5</instrumentWaveBandRef>
+        <instrumentWaveBandRef>0.56421</instrumentWaveBandRef>
         <fringeTrackerMode>FringeTrack GRAVITY</fringeTrackerMode>
     </instrumentConfiguration>
     <observationConfiguration id="HD_1583">

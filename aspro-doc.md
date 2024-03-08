@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: September 26th 2023
+Date: March 8th 2024
 
 Authors:
 -   Laurent BOURGES — JMMC / OSUG
@@ -19,13 +19,14 @@ Authors:
 -   Guillaume MELLA — JMMC/ OSUG
 
 > [!NOTE]
-> **Documentation updates done**
+> **Documentation updates in progress**
 
 
 Revisions:
 <details>
 <summary>Show all revisions:</summary>
 
+-   ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
 -   ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 -   ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
 -   ASPRO 2 version 22.12 (December 2022): Updated export OB section / removed old P2PP actions, add placeholder for the Targets's Table
