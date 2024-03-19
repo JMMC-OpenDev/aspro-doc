@@ -2,7 +2,7 @@
 
 
 
-  
+
 [![ASPRO 2 Logo](images/Aspro2.png)](http://www.jmmc.fr/aspro)
 
 
@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: September 26th 2023
+Date: March 8th 2024
 
 Authors:
 -   Laurent BOURGES — JMMC / OSUG
@@ -19,13 +19,13 @@ Authors:
 -   Guillaume MELLA — JMMC/ OSUG
 
 > [!NOTE]
-> **Documentation updates done**
+> **Documentation updates in progress**
 
 
 Revisions:
+-   ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
 
-<p>Show all revisions:</p>
-
+<p>Show previous revisions:</p>
 -   ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 -   ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
 -   ASPRO 2 version 22.12 (December 2022): Updated export OB section / removed old P2PP actions, add placeholder for the Targets's Table
@@ -259,7 +259,7 @@ The exhaustive list of open source libraries is available: [view credits](http:/
 
 
 ## Guided tour
-How to run a simple preparation scenario ? 
+How to run a simple preparation scenario ?
 1. Launch [ASPRO 2](http://apps.jmmc.fr/~swmgr/Aspro2/Aspro2.jnlp)
 1. Set the main observation settings (interferometer, instrument, configuration ...) and constraints (date ...)
 1. Enter your observation targets using the the Simbad star resolver
@@ -316,7 +316,7 @@ If you are off line, you can enter manually a new target by giving its RA / DEC 
     04:00:00 -20:00:00 TEST
 ```
 
-**To avoid possible target duplicates (different identifiers used), a new target cannot be added to the target list if it contains a target within 5 arcseconds (angular separation)**. In such case, the following message is displayed: 
+**To avoid possible target duplicates (different identifiers used), a new target cannot be added to the target list if it contains a target within 5 arcseconds (angular separation)**. In such case, the following message is displayed:
 ```
 Target [A](ra, dec) too close to Target [B ](ra, dec): ... arcsec.
 ```
@@ -451,9 +451,9 @@ Pointing the `Information` or `Warning` indicator with your mouse displays a too
 
 
 ### Targets tab
-This tab brings all target's informations through a table view. Targets can be sorted by any column (use shift to add a second column ordering). 
+This tab brings all target's informations through a table view. Targets can be sorted by any column (use shift to add a second column ordering).
 
-Click in the bottom right corner to choose your colums of interest. 
+Click in the bottom right corner to choose your colums of interest.
 
 Future release will improve the way to select, filter and group targets.
 
@@ -524,13 +524,13 @@ The selected target in the main target list is represented highlighted using a g
 
 <p>Show more details on the PoPs configuration and best PoPs algorithms:</p>
 
-ASPRO 2 finds the best PoPs combination for the complete target list when the PoPs text field is empty. 
-The current PoPs combination is indicated in the `Current` label, in the plot title and in status indicator messages using the following format "Station(PoP number)...", as in the following image: 
+ASPRO 2 finds the best PoPs combination for the complete target list when the PoPs text field is empty.
+The current PoPs combination is indicated in the `Current` label, in the plot title and in status indicator messages using the following format "Station(PoP number)...", as in the following image:
 ![Automatic PoPs"](images/popsAuto.png)
 
 You can use the PoPs combo box to list best PoP combinations followed by up to good PoP combinations (descending order) and select one to see its impact on the observability of your complete target list.
 
-You can tell ASPRO 2 to use another PoPs combination by entering a valid PoPs code in the PoPs text widget ( "34" means PoP3 on S1 and PoP4 on S2), as in the following image: 
+You can tell ASPRO 2 to use another PoPs combination by entering a valid PoPs code in the PoPs text widget ( "34" means PoP3 on S1 and PoP4 on S2), as in the following image:
 ![User PoPs](images/popsUser.png)
 
 To compare observability between 6T and 5T configurations, please use the `Fixed` PoPs combo boxes (and the `set` / `clear` actions) to associate PoPs with stations in a stable manner:
@@ -716,12 +716,29 @@ There are 2 types of "noise" in Aspro2:
 -   the first one is the noise associated to a single observation and is directly caused by the numbers of photons available for "fringe detection" on the instrument detector. It will decrease with the brightness of the source and the transmission of the telescopes, delay lines, instrument, exposure time (more photons available to start with). It will increase with the detector noise and the atmospheric turbulence.
 -   the second (and often dominant) one is just an added percentage of error expected on **calibrated** values, accounting for the variation of seeing, flux etc between the science target and its calibrator. This latter "noise" can be deactivated in the interface.
 
+---
+
 Noise modelling is based on the [JMMC-MEM-2800-0001 - Noise model for interferometric combiners](http://www.jmmc.fr/doc/approved/JMMC-MEM-2800-0001.pdf) document.
 
 In 2016, the noise modelling and the OIFITS data simulator has been improved for new VLTI instruments (GRAVITY & MATISSE) and this work has been described in the SPIE proceedings:
 [L. Bourgès and G. Duvert, “ASPRO2: get ready for VLTI’s instruments GRAVITY and MATISSE”, Proc. SPIE 9907, Optical and Infrared Interferometry and Imaging V, 990711](http://www.jmmc.fr/doc/index.php?search=JMMC-PUB-2800-0001)
 
+
+Since ASPRO2 2024.03 noise modeling had been improved:
+- enhanced AO model for GRAVITY+ GPAO Natural Guide Star (NGS) to estimate the Strehl ratio and the isoplanetism error using distances between the AO target and interferometric targets (GRAVITY FT or SCI). This implementation was made in collaboration with Dr. Anthony Berdeu, LESIA, ObsPM, whose project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 101004719.
+- implemented the visibility loss for off-axis fringe tracking (GRAVITY FT): it includes the Coherence loss due to phase jittering during fringe tracking and the off-axis coherence loss due to the atmospheric anisoplanetism. To determine the overall visibility loss, an observation with the instrument GRAVITY_FT (automatic DIT based on SNR) is first simulated (LOW mode, 6 channels) to compute the Signal-To-Noise ratio on the FT target (if defined) using its own model (or V=1 if undefined). The SNR per baseline estimation is the weighted average over spectral channels and the bootstrapping for baselines (triangle method) is applied. The RMS variation of the residual optical path differences (OPDs) is derived from the SNR per baseline and FT parameters (automatic DIT & vibration RMS) to give the RMS variation of the fringe phase on the GRAVITY (SCI) detector per baseline and spectral channel. The DIT is automatically determined to use the longest possible DIT that avoids the detector saturation. This implementation was made in collaboration with Dr. Taro Shimizu, MPE (GRAVITY+ Simulator document + code).
+
+**TODO: extract formula**
+
+Noise modeling plots:
+- AO Strehl ratio per instrument:
+  - [VLTI](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_VLTI.md)
+  - [CHARA](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_CHARA.md)
+- [GRAVITY_FT SNR](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/noise/VLTI_UT_GRAVITY_FT-UT_vs_AT.pdf) vs magnitude on ATs / UTs
+
 The relevant parameters for each instrument are described in: [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
+
+---
 
 Data and errors are coming from the simulated OIFits file generated "on the fly" which can be exported using the `File` menu / `Export to OIFits file` action.
 
@@ -944,7 +961,7 @@ Each target can have an user-defined model using one FITS image (monochromatic m
 
 To add or change an user model, click on the `Open` button and choose your FITS image or cube file (fits or fits.gz files are both supported).
 
-The image extent is displayed (too large extent will generate a warning and the image will not be displayed). 
+The image extent is displayed (too large extent will generate a warning and the image will not be displayed).
 One can adjust the image extent using the `Pixel size` field and rotate the image using the `Rotation` field. This permits to "fit" any image, whatever its FITS header values, in the interferometer FOV. Of course you have to know what you do!
 
 The `Telescope FOV` indicates the overall field of view (telescope + spatial filter in the recombiner) that impacts model images if their extent is larger than 20% of the FOV (see the apodization step below).
@@ -955,12 +972,12 @@ Click on the `AMHRA` button to open the [AMHRA](https://amhra.oca.eu/) service t
 > Use the image browser widget to see all polychromatic images (Fits cube only): ![Image browser widget](images/Aspro2_animate_widget.png)
 
 When your FITS image (or cube) is loaded (only the first image / cube present in the FITS file), several image processing tasks are performed to obtain a linear-flux image prepared for Fourier transform computations:
-1. compute its dynamic range 
+1. compute its dynamic range
 1. ignore negative values (set to 0.0)
 1. perform image apodization (if necessary) given the telescope diameter and instrumental minimum or model image wavelength by multiplying the image with a gaussian profile whose $FWHM \approx (lambda / diameter)$. Typically the telescope's PSF is 60 mas for a VLTI/UT. So **if the object is very extended, ASPRO2 will only retain data within the telescope's PSF** (smaller extent).
 1. compute the total flux $Fi$ = sum(image) to normalize the image by 1.0 / Fi i.e. sum(normalized image) = 1.0
 1. ignore flux values lower than an adaptive threshold [*] (i.e. set such values to 0.0) to ensure the error on visibility amplitude is lower than 1 thousandth
-1. extract the region of interest (centered region where flux is \> 0.0 to ignore blank data pixels 
+1. extract the region of interest (centered region where flux is \> 0.0 to ignore blank data pixels
 1. make the image square i.e. width = height = even number
 
 > [!NOTE]
@@ -1051,7 +1068,7 @@ If Interpolation is enabled and 2 model images A and B exist where $\lambda_A \<
 
 With Interpolation, the visibility is a linear combination of Fourier transforms of the A and B normalized images.
 
-For Fits cubes, OI_FLUX's FLUXDATA / FLUXERR columns give the object flux and error (from the object magnitude) scaled by $\frac{Fi}{Fm}$ 
+For Fits cubes, OI_FLUX's FLUXDATA / FLUXERR columns give the object flux and error (from the object magnitude) scaled by $\frac{Fi}{Fm}$
 where $Fm$ is the integrated flux $Fi$ over the band / band width:
 $$Fm = \frac{ \int_{\lambda_{Bmin}}^{\lambda_{Bmax}} Fi.\delta\lambda }{\lambda_{Bmax} - \lambda_{Bmin}}$$
 
@@ -1129,7 +1146,7 @@ Here are JMMC applications supporting the SAMP messaging protocol:
 The following page gives you the official list of VO applications supporting SAMP messaging protocol: [IVOA SAMP Software](http://www.ivoa.net/cgi-bin/twiki/bin/view/IVOA/SampSoftware)
 
 General description:
-The communication architecture is the following: 
+The communication architecture is the following:
 all tools communicate with a central "Hub" process, so a hub must be running in order for the messaging to operate. If a hub is running when a JMMC application starts, or if one starts up while any JMMC application is in operation, it will connect to it automatically. A hub can be started from within any JMMC application if needed. Other tools will have their own policies for connecting to the hub, but in general it is a good idea to start a hub first before starting up the tools which you want to talk to it.
 
 This communication has two aspects to it: on the one hand an application can send messages to other applications which causes them to do things, and on the other hand an application can receive and act on such messages sent by other applications.
@@ -1169,21 +1186,21 @@ How to find calibrators easily using SearchCal from ASPRO 2 ?
 > - As SearchCal uses the JMMC server to operate, an internet connection is required.
 > - SearchCal 4.3+ is required to support interoperability with ASPRO 2.
 
-Here is a step by step tutorial: 
+Here is a step by step tutorial:
 1. Start the SearchCal application (or it is already running) to be able to communicate with it: [SearchCal](http://apps.jmmc.fr/~sclws/SearchCal/SearchCal.jnlp)
 ![Aspro2-calibrators-SearchCal-start.png](images/Aspro2-calibrators-SearchCal-start.png)
 1. In ASPRO 2, select your science target in the target list and use the `Search calibrators` action in the `Interop` menu to let ASPRO 2 send a message to SearchCal with your target information (coordinates, magnitudes), the instrument band and other parameters (maximum baseline length):
 ![Aspro2-calibrators-StartSearchQuery.png](images/Aspro2-calibrators-StartSearchQuery.png)
 1. SearchCal interprets the ASPRO 2 message, updates its graphical user interface and sends the query immediately (please wait). When calibrators are found, they are filtered and displayed:
 ![Aspro2-calibrators-SearchCal-results.png](images/Aspro2-calibrators-SearchCal-results.png)
-1. Select the calibrators you want or all displayed calibrators (i.e. filtered) will be sent to ASPRO 2. 
+1. Select the calibrators you want or all displayed calibrators (i.e. filtered) will be sent to ASPRO 2.
 1. Use the `Send calibrators to` action in the `Interop Menu` to let SearchCal send these calibrators to ASPRO 2:
 ![Aspro2-calibrators-SearchCal-SendCalibrators.png](images/Aspro2-calibrators-SearchCal-SendCalibrators.png)
-1. ASPRO 2 processes the SearchCal message and displays an operation summary: 
+1. ASPRO 2 processes the SearchCal message and displays an operation summary:
 ![Aspro2-calibrators-Summary.png](images/Aspro2-calibrators-Summary.png)
 1. That's all: ASPRO 2 has updated the target list with SearchCal calibrators, created an uniform disk model for every calibrator target using the SearchCal diameter corresponding to the instrument band (UD_ fields) and the graphical user interface is updated:
 
--   Observability plot: 
+-   Observability plot:
     calibrators are represented in blue and are located below their related science target:
 ![Aspro2-calibrators-obs.png](images/Aspro2-calibrators-obs.png)
 -   UV Coverage plot for a SearchCal calibrator target:
