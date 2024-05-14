@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: March 8th 2024
+Date: May 14th 2024
 
 Authors:
 -   Laurent BOURGES — JMMC / OSUG
@@ -716,30 +716,6 @@ There are 2 types of "noise" in Aspro2:
 -   the first one is the noise associated to a single observation and is directly caused by the numbers of photons available for "fringe detection" on the instrument detector. It will decrease with the brightness of the source and the transmission of the telescopes, delay lines, instrument, exposure time (more photons available to start with). It will increase with the detector noise and the atmospheric turbulence.
 -   the second (and often dominant) one is just an added percentage of error expected on **calibrated** values, accounting for the variation of seeing, flux etc between the science target and its calibrator. This latter "noise" can be deactivated in the interface.
 
----
-
-Noise modelling is based on the [JMMC-MEM-2800-0001 - Noise model for interferometric combiners](http://www.jmmc.fr/doc/approved/JMMC-MEM-2800-0001.pdf) document.
-
-In 2016, the noise modelling and the OIFITS data simulator has been improved for new VLTI instruments (GRAVITY & MATISSE) and this work has been described in the SPIE proceedings:
-[L. Bourgès and G. Duvert, “ASPRO2: get ready for VLTI’s instruments GRAVITY and MATISSE”, Proc. SPIE 9907, Optical and Infrared Interferometry and Imaging V, 990711](http://www.jmmc.fr/doc/index.php?search=JMMC-PUB-2800-0001)
-
-
-Since ASPRO2 2024.03 noise modeling had been improved:
-- enhanced AO model for GRAVITY+ GPAO Natural Guide Star (NGS) to estimate the Strehl ratio and the isoplanetism error using distances between the AO target and interferometric targets (GRAVITY FT or SCI). This implementation was made in collaboration with Dr. Anthony Berdeu, LESIA, ObsPM, whose project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 101004719.
-- implemented the visibility loss for off-axis fringe tracking (GRAVITY FT): it includes the Coherence loss due to phase jittering during fringe tracking and the off-axis coherence loss due to the atmospheric anisoplanetism. To determine the overall visibility loss, an observation with the instrument GRAVITY_FT (automatic DIT based on SNR) is first simulated (LOW mode, 6 channels) to compute the Signal-To-Noise ratio on the FT target (if defined) using its own model (or V=1 if undefined). The SNR per baseline estimation is the weighted average over spectral channels and the bootstrapping for baselines (triangle method) is applied. The RMS variation of the residual optical path differences (OPDs) is derived from the SNR per baseline and FT parameters (automatic DIT & vibration RMS) to give the RMS variation of the fringe phase on the GRAVITY (SCI) detector per baseline and spectral channel. The DIT is automatically determined to use the longest possible DIT that avoids the detector saturation. This implementation was made in collaboration with Dr. Taro Shimizu, MPE (GRAVITY+ Simulator document + code).
-
-**TODO: extract formula**
-
-Noise modeling plots:
-- AO Strehl ratio per instrument:
-  - [VLTI](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_VLTI.md)
-  - [CHARA](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_CHARA.md)
-- [GRAVITY_FT SNR](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/noise/VLTI_UT_GRAVITY_FT-UT_vs_AT.pdf) vs magnitude on ATs / UTs
-
-The relevant parameters for each instrument are described in: [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
-
----
-
 Data and errors are coming from the simulated OIFits file generated "on the fly" which can be exported using the `File` menu / `Export to OIFits file` action.
 
 ![Vis2 / T3 plots with error bars](images/Aspro2-vis2-withErr.png)
@@ -755,18 +731,54 @@ Data and errors are coming from the simulated OIFits file generated "on the fly"
 
 
 ### OIFits output
-ASPRO 2 generates [OIFITS](https://oifits.org/) (version 1) compliant files from the current observation settings with OI_VIS, OI_VIS2, OI_T3 and OI_FLUX tables giving the theoretical target's flux in photons (no atmosphere nor transmission loss, strehl).
+ASPRO 2 generates [OIFITS](https://oifits.org/) (version 1) compliant files for the select target using the current observation setup with OI_VIS, OI_VIS2, OI_T3 and OI_FLUX tables.
+The OI_FLUX table (OIFITS version 2) gives the theoretical target's flux in photons (no atmosphere nor transmission loss, strehl).
 
-To illustrate the bandwidth smearing effect of the instrumental spectral configuration, ASPRO 2 uses super sampling (3 samples by default) on the target model to compute complex visibilities for instrument modes having less than 100 spectral channels.
+To illustrate the bandwidth smearing effect of the instrumental spectral configuration, ASPRO 2 uses super sampling (3 samples by default) on the target model to compute complex visibilities for instrument modes having less than 100 spectral channels (large bandwith).
 
-The noise modelling can estimate errors on OI_VIS, OI_VIS2, OI_T3 and OI_FLUX data using object magnitudes and instrument configuration. If a magnitude or flux is missing, errors can not be computed:
--   OIFits column is filled with `NaN` values and marked as invalid (flags = T)
--   the status is Warning in ASPRO 2 with an appropriate message.
+The noise modelling can estimate errors on OI_VIS, OI_VIS2, OI_T3 and OI_FLUX data based on object magnitudes and the current instrument configuration and observation setup (fringe tracker, adaptive optics...).
+
+If a magnitude or flux is missing, errors can not be computed:
+- the OIFits error column is filled with `NaN` values and marked as invalid (flags = T)
+- the status is Warning in ASPRO 2 with an appropriate message.
 
 > [!NOTE]
-> - The OI_VIS table contains additional columns VISDATA and VISERR to store correlated fluxes as complex data;
-> - VISAMP and VISPHI data are ONLY available for AMBER observations using its specific post processing algorithm (amdlib like), and for GRAVITY / MATISSE using purely theoretical estimators.
 > - The number of samples used by the super sampling can be defined by the `Supersampling model in spectral channels` in the [Preferences](#preferences) Window.
+> - The OI_VIS table contains additional (non-standard) columns VISDATA and VISERR to store correlated fluxes as complex data;
+
+About VISAMP and VISPHI quantities in OI_VIS tables:
+- These quantities gives the amplitude and phase of either absolute or differential complex visibilities depending on the selected instrument as described by the [OIFITS 2 standard](https://www.aanda.org/articles/aa/pdf/2017/01/aa26405-15.pdf).
+- The differential visibility is the object complex visibility divided by a reference complex visibility : C_diff_vis(lambda) = C_vis(lambda) / C_vis_ref(lambda).
+- This reference visibility in Aspro2 is the mean of all spectral channels (except the one considered): C_vis_ref(lambda) = ( Sum[ C_vis(l) ] - C_vis(lambda) ) / (N - 1).
+- Differential VISAMP are then normalized by mean(VISAMP) of all spectral channels so it can exceed 1 i.e. only visibility variations with respect to the reference visibility is meaningful, typically to analyse an absorption line.
+- The keywords AMPTYP/PHI_TYPE contains the 'absolute' or 'differential' value to indicate how the VISAMP and VISPHI quantities were computed.
+- The Status Indicator also displays this information 'OI_VIS: (Differential/Absolute) VisAmp - (Differential/Absolute) VisPhi")'.
+- The following table lists instruments using differential complex visibilities in ASPRO2:
+
+| Instrument | VISAMP type  | VISPHI type  |
+|------------|--------------|--------------|
+| AMBER      | differential | differential |
+| GRAVITY    | differential | differential |
+| MATISSE    | absolute     | differential |
+
+---
+
+Noise modelling is based on the [JMMC-MEM-2800-0001 - Noise model for interferometric combiners](http://www.jmmc.fr/doc/approved/JMMC-MEM-2800-0001.pdf) document.
+
+In 2016, the noise modelling and the OIFITS data simulator has been improved for new VLTI instruments (GRAVITY & MATISSE) and this work has been described in the SPIE proceedings:
+[L. Bourgès and G. Duvert, “ASPRO2: get ready for VLTI’s instruments GRAVITY and MATISSE”, Proc. SPIE 9907, Optical and Infrared Interferometry and Imaging V, 990711](http://www.jmmc.fr/doc/index.php?search=JMMC-PUB-2800-0001)
+
+Since ASPRO2 2024.03 noise modeling has been improved:
+- enhanced AO model for GRAVITY+ GPAO Natural Guide Star (NGS) to estimate the Strehl ratio and the isoplanetism error using distances between the AO target and interferometric targets (GRAVITY FT or SCI). This implementation was made in collaboration with Dr. Anthony Berdeu, LESIA, ObsPM, whose project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 101004719.
+- implemented the visibility loss for off-axis fringe tracking (GRAVITY FT): it includes the Coherence loss due to phase jittering during fringe tracking and the off-axis coherence loss due to the atmospheric anisoplanetism. To determine the overall visibility loss, an observation with the instrument GRAVITY_FT (automatic DIT based on SNR) is first simulated (LOW mode, 6 channels) to compute the Signal-To-Noise ratio on the FT target (if defined) using its own model (or V=1 if undefined). The SNR per baseline estimation is the weighted average over spectral channels and the bootstrapping for baselines (triangle method) is applied. The RMS variation of the residual optical path differences (OPDs) is derived from the SNR per baseline and FT parameters (automatic DIT & vibration RMS) to give the RMS variation of the fringe phase on the GRAVITY (SCI) detector per baseline and spectral channel. The DIT is automatically determined to use the longest possible DIT that avoids the detector saturation. This implementation was made in collaboration with Dr. Taro Shimizu, MPE (GRAVITY+ Simulator document + code).
+
+Noise modeling plots:
+- AO Strehl ratio per instrument:
+  - [VLTI](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_VLTI.md)
+  - [CHARA](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_CHARA.md)
+- [GRAVITY_FT SNR](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/noise/VLTI_UT_GRAVITY_FT-UT_vs_AT.pdf) vs magnitude on ATs / UTs
+
+The relevant parameters for each instrument are described in: [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
 
 
 ### Get Information about past observations
