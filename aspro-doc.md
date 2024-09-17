@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: May 14th 2024
+Date: Sep 17th 2024
 
 Authors:
 -   Laurent BOURGES — JMMC / OSUG
@@ -22,10 +22,11 @@ Authors:
 > **Documentation updates in progress**
 
 
-Revisions:
--   ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
+Release history:
+-   ASPRO 2 version 24.09 (September 2024): Improved UV Coverage panel (U-axis orientation, new live mode 'now') + made the 'Configuration Manager' available in all versions
 <details>
 <summary>Show previous revisions:</summary>
+-   ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
 -   ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 -   ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
 -   ASPRO 2 version 22.12 (December 2022): Updated export OB section / removed old P2PP actions, add placeholder for the Targets's Table
@@ -123,40 +124,43 @@ This document will give general information on the new version of ASPRO named "A
 
 
 ## Supported interferometers and instruments
--   VLTI (Period 84 - 113)
-    -   MIDI (2T) until Period 94
-    -   AMBER (3T) until Period 101
-    -   PIONIER (4T) starting from Period 86
-    -   GRAVITY (4T) starting from Period 98, (GRAVITY_FT to check the fringe tracker ability to track faint or unresolved targets)
-    -   MATISSE (4T) starting from Period 103, (MATISSE_LM &amp; MATISSE_N to describe the internal L/M & N instruments)
--   VLTI (Future Period) for experimental instruments
-    -   GRAVITY (4T) with more configurations (relocation)
-    -   MATISSE (4T) with more configurations (relocation)
--   CHARA
-    -   CLASSIC (2T)
-    -   CLIMB (3T)
-    -   MIRCX (4T, 5T, 6T) + MYSTIC (K)
-    -   PAVO (2T, 3T)
-    -   SPICA (6T)
-    -   Former instruments:
-        -   FRIEND (2T, 3T)
-        -   JOUFLU (2T)
-        -   MIRC (4T, 5T, 6T)
-        -   VEGA (2T, 3T, 4T)
--   SUSI
-    -   PAVO (2T)
--   NPOI (preliminary / out-dated support)
-    -   CLASSIC (4T)
-    -   VISION (4T, 5T, 6T)
--   DEMO (demo interferometer and instruments for VLTI schools)
+- VLTI (Period 84 - 115)
+    - MIDI (2T) until Period 94
+    - AMBER (3T) until Period 101
+    - PIONIER (4T) starting from Period 86
+    - GRAVITY (4T) starting from Period 98, (GRAVITY_FT to check the fringe tracker ability to track faint or unresolved targets)
+    - MATISSE (4T) starting from Period 103, (MATISSE_LM &amp; MATISSE_N to describe the internal L/M & N instruments)
+    - Supported Adaptive Optics:
+      - UTs: MACAO until Period 114, GPAO since Period 114
+      - ATs: NAOMI
+- VLTI (Future Period) for experimental instruments
+    - GRAVITY (4T) with more configurations (relocation)
+    - MATISSE (4T) with more configurations (relocation)
+- CHARA
+    - CLASSIC (2T)
+    - CLIMB (3T)
+    - MIRCX (4T, 5T, 6T) + MYSTIC (K)
+    - PAVO (2T, 3T)
+    - SPICA (6T)
+    - Former instruments:
+        - FRIEND (2T, 3T)
+        - JOUFLU (2T)
+        - MIRC (4T, 5T, 6T)
+        - VEGA (2T, 3T, 4T)
+- SUSI
+    - PAVO (2T)
+- NPOI (preliminary / out-dated support)
+  - CLASSIC (4T)
+  - VISION (4T, 5T, 6T)
+- DEMO (demo interferometer and instruments for VLTI schools)
 
-Several xml configuration files are provided as the **ASPRO 2 Configuration package** and can evolve in future releases.
+Xml configuration files are provided as the **ASPRO 2 Configuration package** and evolve with releases.
 
 **Public ASPRO 2 configuration description is available:**
 -   [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
 -   [aspro-conf @ github](https://github.com/JMMC-OpenDev/aspro-conf)
 
-**Please give us your feedback if you want other interferometers or instruments to be supported or if you find mistakes in the configuration: we are trying to maintain the configuration as exact as possible but it is really difficult to have the correct & up-to-date information about instruments ...**
+**Please give us your feedback if you want another interferometer or instrument to be supported or if you find mistakes in the configuration. We are trying to maintain the configuration as exact as possible, but it is really difficult to have the correct & up-to-date information about instruments ...**
 
 > [!NOTE]
 > - **ASPRO 2 started by Java Web Start always uses the latest ASPRO 2 Configuration package (automatic updates require an internet connection).**
@@ -167,17 +171,17 @@ Several xml configuration files are provided as the **ASPRO 2 Configuration pack
 ## Main functionalities
 -   **Dynamic User Interface**: any change made on GUI widgets is taken into account on plots immediately
 -   **Load / Save** an observation file: allows the user to save his work at any moment. The xml file produced can be reopened later (for off-line use, for example), and is convenient to save all information relative to a list of targets, which can be sent to collaborators, observers at the interferometer, etc...
--   **Interferometer sketch**: display base lines of the selected configuration(s)
+-   **Interferometer sketch**: display baselines of the selected configuration(s)
 -   **Observability** plot: represents time intervals when the source can be observed with transit and elevation marks, night and twilight
-    zones, delay line compensation for the selected base lines, (best) PoPs (CHARA), telescope shadowing (VLTI) and zenithal restriction,
+    zones, delay line compensation for the selected baselines, (best) PoPs (CHARA), telescope shadowing (VLTI) and zenithal restriction,
     pointing restrictions due to the moon avoidance and the wind direction
--   **UV Coverage** plot: shows projected base lines on the UV plan and an image of the source model to see the UV coverage of the source
+-   **UV Coverage** plot: shows projected baselines on the UV plan and an image of the source model to see the UV coverage of the source
 -   **OIFits viewer**: provides several OIFits data plots (square visibility and closure phase vs spatial frequency ...) including error bars and spectral dispersion
 -   Multi configuration support to have an overview of UV coverages of one source observed with different configurations
 -   **Target editor**: show complete target information, edit missing target magnitudes and associate calibrators to your science targets
 -   **Model editor**: each source can have its own object model composed of several elementary models (punct, disk, ring, gaussian, limb darkened disk ...) or an user-defined model (FITS image)
 -   **Interoperability** using SAMP (VO protocol):
-    -   Import targets from VO tools like Simbad, ViZier, Topcat using VOTable format (version 1.1 and 1.2)
+    -   Import targets from VO tools like Simbad, VizieR, Topcat using VOTable format (version 1.1 and 1.2)
     -   SearchCal to search calibrators for your science target(s)
     -   LITpro to prepare your model fitting using generated OIFits file(s) and the object model of your current target
     -   OIFits Explorer or OImaging to prepare your data processing
@@ -192,13 +196,13 @@ Several xml configuration files are provided as the **ASPRO 2 Configuration pack
 
 
 ## Requirements
--   Java Runtime Environment (JRE) 8 or newer: **Java 11 or 17 (OpenJDK) is recommended** (security fixes + Long Term Support)
+-   Java Runtime Environment (JRE) 8 or newer: **Java 11 or 17 or 21 (OpenJDK LTS release) is recommended** (security fixes + Long Term Support)
 -   any PDF reader to display and print any exported plot
 -   An Internet connection to resolve star identifiers using the CDS [Simbad](http://simbad.u-strasbg.fr/simbad/sim-fid) service and get past observation logs
 
 > [!NOTE]
-> - Java 6 or 7 is no more supported by JMMC applications, but **Java 8 or newer is recommended**.
-> - Java 11+ is already supported but only OpenJDK + IcedTeaWeb do provide both Java & Java Web Start support.
+> - Java 6 or 7 is no more supported by JMMC applications, so **Java 8 or newer is recommended**.
+> - Java 21 is supported but only (OpenJDK 17 + IcedTeaWeb 1.8) do provide the Java Web Start support.
 
 OpenJDK binary packages are available through several providers:
 -   Eclipse Adoptium OpenJDK builds: <https://adoptium.net/>
@@ -228,11 +232,11 @@ Alternatively you can start it again later using the Java Web Start Viewer and c
 
 If Java Web Start is not working properly on your environment or if ASPRO 2 needs more memory (1024m by default), you can download the [ASPRO 2 (JAR file)](http://www.jmmc.fr/apps) and run ASPRO 2 using the following command:
 ```
-    java -Xms256m -Xmx1024m -jar Aspro2-Version.jar
+    java -Xms1024m -Xmx4096m -jar Aspro2-Version.jar
 ```
 where:
--   Xms: gives the minimum heap memory size (256 mb)
--   Xmx: gives the maximum heap memory size (1024 mb)
+-   Xms: gives the minimum heap memory size (1024 mb = 1 gb)
+-   Xmx: gives the maximum heap memory size (4096 mb = 4 gb)
 
 > [!NOTE]
 > Look at the memory monitor in the status bar to know how much memory is available (depending on the loaded user models) and potentially clean up memory (garbage collection) by clicking on the memory's progress bar.
@@ -286,7 +290,7 @@ The main panel is always present at the top of the application window to let you
 This panel is divided in four parts:
 -   [Targets](#target-definition): add / remove / edit your targets
 -   [Main settings](#main-settings): define main settings (interferometer, instrument ...)
--   [Configuration(s)](#configurations): select one or more configurations (base lines)
+-   [Configuration(s)](#configurations): select one or more configurations (baselines)
 -   [Constraints](#constraints): define less important settings (date, night restriction ...)
 
 > [!NOTE]
@@ -369,7 +373,7 @@ This panel let you define your main settings:
 
 
 #### Configuration(s)
-This panel let you choose one or more base line configurations in the configuration list which contains only available base lines for the selected instrument (and period for VLTI or CHARA).
+This panel let you choose one or more base line configurations in the configuration list which contains only available baselines for the selected instrument (and period for VLTI or CHARA).
 
 To select several configurations, use the `Control` key or `Command` key (mac) before clicking on one configuration.
 
@@ -459,7 +463,7 @@ Future release will improve the way to select, filter and group targets.
 
 
 ### Interferometer sketch (Map tab)
-This zoomable plot shows the selected interferometer with all stations and selected base lines. Selected base lines are indicated with their lengths in the legend area.
+This zoomable plot shows the selected interferometer with all stations and selected baselines. Selected baselines are indicated with their lengths in the legend area.
 
 ![Interferometer sketch](images/Aspro2-map.png)
 
@@ -492,7 +496,7 @@ Several plot options are available in this case:
 Target observability takes into account:
 -   night limit for the observation date (if enabled)
 -   chosen minimum elevation
--   delay line compensation for selected base lines
+-   delay line compensation for selected baselines
 -   CHARA'S Pipes Of Pan (PoPs), detailed below
 -   telescope shadowing (VLTI)
 -   zenithal restriction
@@ -546,7 +550,7 @@ The best PoPs algorithm has two different behaviour depending on your target lis
 The best PoPs algorithm takes only into account (for performance reasons):
 -   night limit for the observation date (if enabled)
 -   chosen minimum elevation (rise/set interval)
--   delay line compensation for selected base lines
+-   delay line compensation for selected baselines
 -   HA constraints (not in the Simple algorithm)
 -   Fixed PoPs restrict the evaluated PoP combinations (W2 is set to Pop5 by default)
 
@@ -585,7 +589,7 @@ The detailed observability plot shows each target multiple times (look at the le
 
 ![BaseLine Limits plot](images/Aspro2-obs-bl.png)
 
-This plot is useful to see telescope shadowing restrictions for the selected base lines on the VLTI and also the zenithal restriction.
+This plot is useful to see telescope shadowing restrictions for the selected baselines on the VLTI and also the zenithal restriction.
 
 </details>
 
@@ -835,7 +839,7 @@ To illustrate this feature, following configurations are selected to produce the
 
 
 #### Interferometer sketch
-This plot shows selected configurations and their related base lines:
+This plot shows selected configurations and their related baselines:
 ![Aspro2-multiConf-map.png](images/Aspro2-multiConf-map.png)
 
 #### Observability plot
