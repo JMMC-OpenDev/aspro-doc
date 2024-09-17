@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: March 8th 2024
+Date: Sep 17th 2024
 
 Authors:
 -   Laurent BOURGES — JMMC / OSUG
@@ -22,10 +22,11 @@ Authors:
 > **Documentation updates in progress**
 
 
-Revisions:
--   ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
+Release history:
+-   ASPRO 2 version 24.09 (September 2024): Improved UV Coverage panel (U-axis orientation, new live mode 'now') + made the 'Configuration Manager' available in all versions
 
 <p>Show previous revisions:</p>
+-   ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
 -   ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 -   ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
 -   ASPRO 2 version 22.12 (December 2022): Updated export OB section / removed old P2PP actions, add placeholder for the Targets's Table
@@ -123,40 +124,43 @@ This document will give general information on the new version of ASPRO named "A
 
 
 ## Supported interferometers and instruments
--   VLTI (Period 84 - 113)
-    -   MIDI (2T) until Period 94
-    -   AMBER (3T) until Period 101
-    -   PIONIER (4T) starting from Period 86
-    -   GRAVITY (4T) starting from Period 98, (GRAVITY_FT to check the fringe tracker ability to track faint or unresolved targets)
-    -   MATISSE (4T) starting from Period 103, (MATISSE_LM &amp; MATISSE_N to describe the internal L/M & N instruments)
--   VLTI (Future Period) for experimental instruments
-    -   GRAVITY (4T) with more configurations (relocation)
-    -   MATISSE (4T) with more configurations (relocation)
--   CHARA
-    -   CLASSIC (2T)
-    -   CLIMB (3T)
-    -   MIRCX (4T, 5T, 6T) + MYSTIC (K)
-    -   PAVO (2T, 3T)
-    -   SPICA (6T)
-    -   Former instruments:
-        -   FRIEND (2T, 3T)
-        -   JOUFLU (2T)
-        -   MIRC (4T, 5T, 6T)
-        -   VEGA (2T, 3T, 4T)
--   SUSI
-    -   PAVO (2T)
--   NPOI (preliminary / out-dated support)
-    -   CLASSIC (4T)
-    -   VISION (4T, 5T, 6T)
--   DEMO (demo interferometer and instruments for VLTI schools)
+- VLTI (Period 84 - 115)
+    - MIDI (2T) until Period 94
+    - AMBER (3T) until Period 101
+    - PIONIER (4T) starting from Period 86
+    - GRAVITY (4T) starting from Period 98, (GRAVITY_FT to check the fringe tracker ability to track faint or unresolved targets)
+    - MATISSE (4T) starting from Period 103, (MATISSE_LM &amp; MATISSE_N to describe the internal L/M & N instruments)
+    - Supported Adaptive Optics:
+      - UTs: MACAO until Period 114, GPAO since Period 114
+      - ATs: NAOMI
+- VLTI (Future Period) for experimental instruments
+    - GRAVITY (4T) with more configurations (relocation)
+    - MATISSE (4T) with more configurations (relocation)
+- CHARA
+    - CLASSIC (2T)
+    - CLIMB (3T)
+    - MIRCX (4T, 5T, 6T) + MYSTIC (K)
+    - PAVO (2T, 3T)
+    - SPICA (6T)
+    - Former instruments:
+        - FRIEND (2T, 3T)
+        - JOUFLU (2T)
+        - MIRC (4T, 5T, 6T)
+        - VEGA (2T, 3T, 4T)
+- SUSI
+    - PAVO (2T)
+- NPOI (preliminary / out-dated support)
+  - CLASSIC (4T)
+  - VISION (4T, 5T, 6T)
+- DEMO (demo interferometer and instruments for VLTI schools)
 
-Several xml configuration files are provided as the **ASPRO 2 Configuration package** and can evolve in future releases.
+Xml configuration files are provided as the **ASPRO 2 Configuration package** and evolve with releases.
 
 **Public ASPRO 2 configuration description is available:**
 -   [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
 -   [aspro-conf @ github](https://github.com/JMMC-OpenDev/aspro-conf)
 
-**Please give us your feedback if you want other interferometers or instruments to be supported or if you find mistakes in the configuration: we are trying to maintain the configuration as exact as possible but it is really difficult to have the correct & up-to-date information about instruments ...**
+**Please give us your feedback if you want another interferometer or instrument to be supported or if you find mistakes in the configuration. We are trying to maintain the configuration as exact as possible, but it is really difficult to have the correct & up-to-date information about instruments ...**
 
 > [!NOTE]
 > - **ASPRO 2 started by Java Web Start always uses the latest ASPRO 2 Configuration package (automatic updates require an internet connection).**
@@ -167,17 +171,17 @@ Several xml configuration files are provided as the **ASPRO 2 Configuration pack
 ## Main functionalities
 -   **Dynamic User Interface**: any change made on GUI widgets is taken into account on plots immediately
 -   **Load / Save** an observation file: allows the user to save his work at any moment. The xml file produced can be reopened later (for off-line use, for example), and is convenient to save all information relative to a list of targets, which can be sent to collaborators, observers at the interferometer, etc...
--   **Interferometer sketch**: display base lines of the selected configuration(s)
+-   **Interferometer sketch**: display baselines of the selected configuration(s)
 -   **Observability** plot: represents time intervals when the source can be observed with transit and elevation marks, night and twilight
-    zones, delay line compensation for the selected base lines, (best) PoPs (CHARA), telescope shadowing (VLTI) and zenithal restriction,
+    zones, delay line compensation for the selected baselines, (best) PoPs (CHARA), telescope shadowing (VLTI) and zenithal restriction,
     pointing restrictions due to the moon avoidance and the wind direction
--   **UV Coverage** plot: shows projected base lines on the UV plan and an image of the source model to see the UV coverage of the source
+-   **UV Coverage** plot: shows projected baselines on the UV plan and an image of the source model to see the UV coverage of the source
 -   **OIFits viewer**: provides several OIFits data plots (square visibility and closure phase vs spatial frequency ...) including error bars and spectral dispersion
 -   Multi configuration support to have an overview of UV coverages of one source observed with different configurations
 -   **Target editor**: show complete target information, edit missing target magnitudes and associate calibrators to your science targets
 -   **Model editor**: each source can have its own object model composed of several elementary models (punct, disk, ring, gaussian, limb darkened disk ...) or an user-defined model (FITS image)
 -   **Interoperability** using SAMP (VO protocol):
-    -   Import targets from VO tools like Simbad, ViZier, Topcat using VOTable format (version 1.1 and 1.2)
+    -   Import targets from VO tools like Simbad, VizieR, Topcat using VOTable format (version 1.1 and 1.2)
     -   SearchCal to search calibrators for your science target(s)
     -   LITpro to prepare your model fitting using generated OIFits file(s) and the object model of your current target
     -   OIFits Explorer or OImaging to prepare your data processing
@@ -192,13 +196,13 @@ Several xml configuration files are provided as the **ASPRO 2 Configuration pack
 
 
 ## Requirements
--   Java Runtime Environment (JRE) 8 or newer: **Java 11 or 17 (OpenJDK) is recommended** (security fixes + Long Term Support)
+-   Java Runtime Environment (JRE) 8 or newer: **Java 11 or 17 or 21 (OpenJDK LTS release) is recommended** (security fixes + Long Term Support)
 -   any PDF reader to display and print any exported plot
 -   An Internet connection to resolve star identifiers using the CDS [Simbad](http://simbad.u-strasbg.fr/simbad/sim-fid) service and get past observation logs
 
 > [!NOTE]
-> - Java 6 or 7 is no more supported by JMMC applications, but **Java 8 or newer is recommended**.
-> - Java 11+ is already supported but only OpenJDK + IcedTeaWeb do provide both Java & Java Web Start support.
+> - Java 6 or 7 is no more supported by JMMC applications, so **Java 8 or newer is recommended**.
+> - Java 21 is supported but only (OpenJDK 17 + IcedTeaWeb 1.8) do provide the Java Web Start support.
 
 OpenJDK binary packages are available through several providers:
 -   Eclipse Adoptium OpenJDK builds: <https://adoptium.net/>
@@ -228,11 +232,11 @@ Alternatively you can start it again later using the Java Web Start Viewer and c
 
 If Java Web Start is not working properly on your environment or if ASPRO 2 needs more memory (1024m by default), you can download the [ASPRO 2 (JAR file)](http://www.jmmc.fr/apps) and run ASPRO 2 using the following command:
 ```
-    java -Xms256m -Xmx1024m -jar Aspro2-Version.jar
+    java -Xms1024m -Xmx4096m -jar Aspro2-Version.jar
 ```
 where:
--   Xms: gives the minimum heap memory size (256 mb)
--   Xmx: gives the maximum heap memory size (1024 mb)
+-   Xms: gives the minimum heap memory size (1024 mb = 1 gb)
+-   Xmx: gives the maximum heap memory size (4096 mb = 4 gb)
 
 > [!NOTE]
 > Look at the memory monitor in the status bar to know how much memory is available (depending on the loaded user models) and potentially clean up memory (garbage collection) by clicking on the memory's progress bar.
@@ -286,7 +290,7 @@ The main panel is always present at the top of the application window to let you
 This panel is divided in four parts:
 -   [Targets](#target-definition): add / remove / edit your targets
 -   [Main settings](#main-settings): define main settings (interferometer, instrument ...)
--   [Configuration(s)](#configurations): select one or more configurations (base lines)
+-   [Configuration(s)](#configurations): select one or more configurations (baselines)
 -   [Constraints](#constraints): define less important settings (date, night restriction ...)
 
 > [!NOTE]
@@ -369,7 +373,7 @@ This panel let you define your main settings:
 
 
 #### Configuration(s)
-This panel let you choose one or more base line configurations in the configuration list which contains only available base lines for the selected instrument (and period for VLTI or CHARA).
+This panel let you choose one or more base line configurations in the configuration list which contains only available baselines for the selected instrument (and period for VLTI or CHARA).
 
 To select several configurations, use the `Control` key or `Command` key (mac) before clicking on one configuration.
 
@@ -459,7 +463,7 @@ Future release will improve the way to select, filter and group targets.
 
 
 ### Interferometer sketch (Map tab)
-This zoomable plot shows the selected interferometer with all stations and selected base lines. Selected base lines are indicated with their lengths in the legend area.
+This zoomable plot shows the selected interferometer with all stations and selected baselines. Selected baselines are indicated with their lengths in the legend area.
 
 ![Interferometer sketch](images/Aspro2-map.png)
 
@@ -492,7 +496,7 @@ Several plot options are available in this case:
 Target observability takes into account:
 -   night limit for the observation date (if enabled)
 -   chosen minimum elevation
--   delay line compensation for selected base lines
+-   delay line compensation for selected baselines
 -   CHARA'S Pipes Of Pan (PoPs), detailed below
 -   telescope shadowing (VLTI)
 -   zenithal restriction
@@ -546,7 +550,7 @@ The best PoPs algorithm has two different behaviour depending on your target lis
 The best PoPs algorithm takes only into account (for performance reasons):
 -   night limit for the observation date (if enabled)
 -   chosen minimum elevation (rise/set interval)
--   delay line compensation for selected base lines
+-   delay line compensation for selected baselines
 -   HA constraints (not in the Simple algorithm)
 -   Fixed PoPs restrict the evaluated PoP combinations (W2 is set to Pop5 by default)
 
@@ -585,7 +589,7 @@ The detailed observability plot shows each target multiple times (look at the le
 
 ![BaseLine Limits plot](images/Aspro2-obs-bl.png)
 
-This plot is useful to see telescope shadowing restrictions for the selected base lines on the VLTI and also the zenithal restriction.
+This plot is useful to see telescope shadowing restrictions for the selected baselines on the VLTI and also the zenithal restriction.
 
 
 
@@ -716,30 +720,6 @@ There are 2 types of "noise" in Aspro2:
 -   the first one is the noise associated to a single observation and is directly caused by the numbers of photons available for "fringe detection" on the instrument detector. It will decrease with the brightness of the source and the transmission of the telescopes, delay lines, instrument, exposure time (more photons available to start with). It will increase with the detector noise and the atmospheric turbulence.
 -   the second (and often dominant) one is just an added percentage of error expected on **calibrated** values, accounting for the variation of seeing, flux etc between the science target and its calibrator. This latter "noise" can be deactivated in the interface.
 
----
-
-Noise modelling is based on the [JMMC-MEM-2800-0001 - Noise model for interferometric combiners](http://www.jmmc.fr/doc/approved/JMMC-MEM-2800-0001.pdf) document.
-
-In 2016, the noise modelling and the OIFITS data simulator has been improved for new VLTI instruments (GRAVITY & MATISSE) and this work has been described in the SPIE proceedings:
-[L. Bourgès and G. Duvert, “ASPRO2: get ready for VLTI’s instruments GRAVITY and MATISSE”, Proc. SPIE 9907, Optical and Infrared Interferometry and Imaging V, 990711](http://www.jmmc.fr/doc/index.php?search=JMMC-PUB-2800-0001)
-
-
-Since ASPRO2 2024.03 noise modeling had been improved:
-- enhanced AO model for GRAVITY+ GPAO Natural Guide Star (NGS) to estimate the Strehl ratio and the isoplanetism error using distances between the AO target and interferometric targets (GRAVITY FT or SCI). This implementation was made in collaboration with Dr. Anthony Berdeu, LESIA, ObsPM, whose project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 101004719.
-- implemented the visibility loss for off-axis fringe tracking (GRAVITY FT): it includes the Coherence loss due to phase jittering during fringe tracking and the off-axis coherence loss due to the atmospheric anisoplanetism. To determine the overall visibility loss, an observation with the instrument GRAVITY_FT (automatic DIT based on SNR) is first simulated (LOW mode, 6 channels) to compute the Signal-To-Noise ratio on the FT target (if defined) using its own model (or V=1 if undefined). The SNR per baseline estimation is the weighted average over spectral channels and the bootstrapping for baselines (triangle method) is applied. The RMS variation of the residual optical path differences (OPDs) is derived from the SNR per baseline and FT parameters (automatic DIT & vibration RMS) to give the RMS variation of the fringe phase on the GRAVITY (SCI) detector per baseline and spectral channel. The DIT is automatically determined to use the longest possible DIT that avoids the detector saturation. This implementation was made in collaboration with Dr. Taro Shimizu, MPE (GRAVITY+ Simulator document + code).
-
-**TODO: extract formula**
-
-Noise modeling plots:
-- AO Strehl ratio per instrument:
-  - [VLTI](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_VLTI.md)
-  - [CHARA](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_CHARA.md)
-- [GRAVITY_FT SNR](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/noise/VLTI_UT_GRAVITY_FT-UT_vs_AT.pdf) vs magnitude on ATs / UTs
-
-The relevant parameters for each instrument are described in: [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
-
----
-
 Data and errors are coming from the simulated OIFits file generated "on the fly" which can be exported using the `File` menu / `Export to OIFits file` action.
 
 ![Vis2 / T3 plots with error bars](images/Aspro2-vis2-withErr.png)
@@ -755,18 +735,54 @@ Data and errors are coming from the simulated OIFits file generated "on the fly"
 
 
 ### OIFits output
-ASPRO 2 generates [OIFITS](https://oifits.org/) (version 1) compliant files from the current observation settings with OI_VIS, OI_VIS2, OI_T3 and OI_FLUX tables giving the theoretical target's flux in photons (no atmosphere nor transmission loss, strehl).
+ASPRO 2 generates [OIFITS](https://oifits.org/) (version 1) compliant files for the select target using the current observation setup with OI_VIS, OI_VIS2, OI_T3 and OI_FLUX tables.
+The OI_FLUX table (OIFITS version 2) gives the theoretical target's flux in photons (no atmosphere nor transmission loss, strehl).
 
-To illustrate the bandwidth smearing effect of the instrumental spectral configuration, ASPRO 2 uses super sampling (3 samples by default) on the target model to compute complex visibilities for instrument modes having less than 100 spectral channels.
+To illustrate the bandwidth smearing effect of the instrumental spectral configuration, ASPRO 2 uses super sampling (3 samples by default) on the target model to compute complex visibilities for instrument modes having less than 100 spectral channels (large bandwith).
 
-The noise modelling can estimate errors on OI_VIS, OI_VIS2, OI_T3 and OI_FLUX data using object magnitudes and instrument configuration. If a magnitude or flux is missing, errors can not be computed:
--   OIFits column is filled with `NaN` values and marked as invalid (flags = T)
--   the status is Warning in ASPRO 2 with an appropriate message.
+The noise modelling can estimate errors on OI_VIS, OI_VIS2, OI_T3 and OI_FLUX data based on object magnitudes and the current instrument configuration and observation setup (fringe tracker, adaptive optics...).
+
+If a magnitude or flux is missing, errors can not be computed:
+- the OIFits error column is filled with `NaN` values and marked as invalid (flags = T)
+- the status is Warning in ASPRO 2 with an appropriate message.
 
 > [!NOTE]
-> - The OI_VIS table contains additional columns VISDATA and VISERR to store correlated fluxes as complex data;
-> - VISAMP and VISPHI data are ONLY available for AMBER observations using its specific post processing algorithm (amdlib like), and for GRAVITY / MATISSE using purely theoretical estimators.
 > - The number of samples used by the super sampling can be defined by the `Supersampling model in spectral channels` in the [Preferences](#preferences) Window.
+> - The OI_VIS table contains additional (non-standard) columns VISDATA and VISERR to store correlated fluxes as complex data;
+
+About VISAMP and VISPHI quantities in OI_VIS tables:
+- These quantities gives the amplitude and phase of either absolute or differential complex visibilities depending on the selected instrument as described by the [OIFITS 2 standard](https://www.aanda.org/articles/aa/pdf/2017/01/aa26405-15.pdf).
+- The differential visibility is the object complex visibility divided by a reference complex visibility : C_diff_vis(lambda) = C_vis(lambda) / C_vis_ref(lambda).
+- This reference visibility in Aspro2 is the mean of all spectral channels (except the one considered): C_vis_ref(lambda) = ( Sum[ C_vis(l) ] - C_vis(lambda) ) / (N - 1).
+- Differential VISAMP are then normalized by mean(VISAMP) of all spectral channels so it can exceed 1 i.e. only visibility variations with respect to the reference visibility is meaningful, typically to analyse an absorption line.
+- The keywords AMPTYP/PHI_TYPE contains the 'absolute' or 'differential' value to indicate how the VISAMP and VISPHI quantities were computed.
+- The Status Indicator also displays this information 'OI_VIS: (Differential/Absolute) VisAmp - (Differential/Absolute) VisPhi")'.
+- The following table lists instruments using differential complex visibilities in ASPRO2:
+
+| Instrument | VISAMP type  | VISPHI type  |
+|------------|--------------|--------------|
+| AMBER      | differential | differential |
+| GRAVITY    | differential | differential |
+| MATISSE    | absolute     | differential |
+
+---
+
+Noise modelling is based on the [JMMC-MEM-2800-0001 - Noise model for interferometric combiners](http://www.jmmc.fr/doc/approved/JMMC-MEM-2800-0001.pdf) document.
+
+In 2016, the noise modelling and the OIFITS data simulator has been improved for new VLTI instruments (GRAVITY & MATISSE) and this work has been described in the SPIE proceedings:
+[L. Bourgès and G. Duvert, “ASPRO2: get ready for VLTI’s instruments GRAVITY and MATISSE”, Proc. SPIE 9907, Optical and Infrared Interferometry and Imaging V, 990711](http://www.jmmc.fr/doc/index.php?search=JMMC-PUB-2800-0001)
+
+Since ASPRO2 2024.03 noise modeling has been improved:
+- enhanced AO model for GRAVITY+ GPAO Natural Guide Star (NGS) to estimate the Strehl ratio and the isoplanetism error using distances between the AO target and interferometric targets (GRAVITY FT or SCI). This implementation was made in collaboration with Dr. Anthony Berdeu, LESIA, ObsPM, whose project has received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 101004719.
+- implemented the visibility loss for off-axis fringe tracking (GRAVITY FT): it includes the Coherence loss due to phase jittering during fringe tracking and the off-axis coherence loss due to the atmospheric anisoplanetism. To determine the overall visibility loss, an observation with the instrument GRAVITY_FT (automatic DIT based on SNR) is first simulated (LOW mode, 6 channels) to compute the Signal-To-Noise ratio on the FT target (if defined) using its own model (or V=1 if undefined). The SNR per baseline estimation is the weighted average over spectral channels and the bootstrapping for baselines (triangle method) is applied. The RMS variation of the residual optical path differences (OPDs) is derived from the SNR per baseline and FT parameters (automatic DIT & vibration RMS) to give the RMS variation of the fringe phase on the GRAVITY (SCI) detector per baseline and spectral channel. The DIT is automatically determined to use the longest possible DIT that avoids the detector saturation. This implementation was made in collaboration with Dr. Taro Shimizu, MPE (GRAVITY+ Simulator document + code).
+
+Noise modeling plots:
+- AO Strehl ratio per instrument:
+  - [VLTI](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_VLTI.md)
+  - [CHARA](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/strehl/index_CHARA.md)
+- [GRAVITY_FT SNR](https://github.com/JMMC-OpenDev/aspro/blob/master/doc/noise/VLTI_UT_GRAVITY_FT-UT_vs_AT.pdf) vs magnitude on ATs / UTs
+
+The relevant parameters for each instrument are described in: [Latest Aspro Configuration](http://apps.jmmc.fr/~swmgr/AsproOIConfigurations/)
 
 
 ### Get Information about past observations
@@ -823,7 +839,7 @@ To illustrate this feature, following configurations are selected to produce the
 
 
 #### Interferometer sketch
-This plot shows selected configurations and their related base lines:
+This plot shows selected configurations and their related baselines:
 ![Aspro2-multiConf-map.png](images/Aspro2-multiConf-map.png)
 
 #### Observability plot
