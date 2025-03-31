@@ -65,54 +65,54 @@ Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
 
 <!--toc-->
 - [ASPRO 2 User Manual](#aspro-2-user-manual)
-    * [Table of contents](#table-of-contents)
-    * [Description](#description)
-    * [Supported interferometers and instruments](#supported-interferometers-and-instruments)
-    * [Main functionalities](#main-functionalities)
-    * [Requirements](#requirements)
-    * [How to get and run ASPRO 2 ?](#how-to-get-and-run-aspro-2-)
-    * [Acknowledgement](#acknowledgement)
-    * [Guided tour](#guided-tour)
-        * [Main observation settings](#main-observation-settings)
-            * [Target definition](#target-definition)
-            * [Main settings](#main-settings)
-            * [Configuration(s)](#configurations)
-            * [Constraints](#constraints)
-            * [Status indicator](#status-indicator)
-        * [Targets tab](#targets-tab)
-        * [Interferometer sketch (Map tab)](#interferometer-sketch-map-tab)
-        * [Observability tab](#observability-tab)
-        * [UV coverage tab](#uv-coverage-tab)
-        * [OIFits Viewer tab](#oifits-viewer-tab)
-        * [OIFits output](#oifits-output)
-        * [Get Information about past observations](#get-information-about-past-observations)
-            * [Observability plot](#observability-plot)
-            * [UV Coverage plot](#uv-coverage-plot)
-        * [Multi configuration support](#multi-configuration-support)
-            * [Interferometer sketch](#interferometer-sketch)
-            * [Observability plot](#observability-plot-1)
-            * [UV Coverage plot](#uv-coverage-plot-1)
-            * [OIFits viewer](#oifits-viewer)
-        * [Target Editor](#target-editor)
-            * [Targets Tabbed Pane](#targets-tabbed-pane)
-            * [Models Tabbed Pane](#models-tabbed-pane)
-                * [Analytical model](#analytical-model)
-                * [User-defined model](#user-defined-model)
-                * [Polychromatic User-defined model](#polychromatic-user-defined-model)
-            * [Groups Tabbed Pane](#groups-tabbed-pane)
-        * [Preferences](#preferences)
-        * [JSkyCalc tool](#jskycalc-tool)
-    * [Interoperability](#interoperability)
-        * [SAMP in JMMC applications](#samp-in-jmmc-applications)
-        * [ASPRO 2 / SearchCal](#aspro-2--searchcal)
-        * [ASPRO 2 / LITpro](#aspro-2--litpro)
-        * [ASPRO 2 / OIFits Explorer](#aspro-2--oifits-explorer)
-        * [ASPRO 2 / A2P2](#aspro-2--a2p2)
-        * [ASPRO 2 - Export targets to VO Tools](#aspro-2---export-targets-to-vo-tools)
-        * [ASPRO 2 - Import targets from VO Tools](#aspro-2---import-targets-from-vo-tools)
-        * [ASPRO 2 - Import FITS image from VO Tools](#aspro-2---import-fits-image-from-vo-tools)
-    * [Support and change requests](#support-and-change-requests)
-    * [Sample files](#sample-files)
+  - [Table of contents](#table-of-contents)
+  - [Description](#description)
+  - [Supported interferometers and instruments](#supported-interferometers-and-instruments)
+  - [Main functionalities](#main-functionalities)
+  - [Requirements](#requirements)
+  - [How to get and run ASPRO 2 ?](#how-to-get-and-run-aspro-2-)
+  - [Acknowledgement](#acknowledgement)
+  - [Guided tour](#guided-tour)
+    - [Main observation settings](#main-observation-settings)
+      - [Target definition](#target-definition)
+      - [Main settings](#main-settings)
+      - [Configuration(s)](#configurations)
+      - [Constraints](#constraints)
+      - [Status indicator](#status-indicator)
+    - [Targets tab](#targets-tab)
+    - [Interferometer sketch (Map tab)](#interferometer-sketch-map-tab)
+    - [Observability tab](#observability-tab)
+    - [UV coverage tab](#uv-coverage-tab)
+    - [OIFits Viewer tab](#oifits-viewer-tab)
+    - [OIFits output](#oifits-output)
+    - [Get Information about past observations](#get-information-about-past-observations)
+      - [Observability plot](#observability-plot)
+      - [UV Coverage plot](#uv-coverage-plot)
+    - [Multi configuration support](#multi-configuration-support)
+      - [Interferometer sketch](#interferometer-sketch)
+      - [Observability plot](#observability-plot-1)
+      - [UV Coverage plot](#uv-coverage-plot-1)
+      - [OIFits viewer](#oifits-viewer)
+    - [Target Editor](#target-editor)
+      - [Targets Tabbed Pane](#targets-tabbed-pane)
+      - [Models Tabbed Pane](#models-tabbed-pane)
+        - [Analytical model](#analytical-model)
+        - [User-defined model](#user-defined-model)
+        - [Polychromatic User-defined model](#polychromatic-user-defined-model)
+      - [Groups Tabbed Pane](#groups-tabbed-pane)
+    - [Preferences](#preferences)
+    - [JSkyCalc tool](#jskycalc-tool)
+  - [Interoperability](#interoperability)
+    - [SAMP in JMMC applications](#samp-in-jmmc-applications)
+    - [ASPRO 2 / SearchCal](#aspro-2--searchcal)
+    - [ASPRO 2 / LITpro](#aspro-2--litpro)
+    - [ASPRO 2 / OIFits Explorer](#aspro-2--oifits-explorer)
+    - [ASPRO 2 / A2P2](#aspro-2--a2p2)
+    - [ASPRO 2 - Export targets to VO Tools](#aspro-2---export-targets-to-vo-tools)
+    - [ASPRO 2 - Import targets from VO Tools](#aspro-2---import-targets-from-vo-tools)
+    - [ASPRO 2 - Import FITS image from VO Tools](#aspro-2---import-fits-image-from-vo-tools)
+  - [Support and change requests](#support-and-change-requests)
+  - [Sample files](#sample-files)
 
 <!-- tocstop -->
 
@@ -944,8 +944,14 @@ Each target can have its own object model composed of several elementary analyti
 - `gaussian` distribution with elongated and flattened variants
 - `limb` darkened disk
 
+Additionnally one can use elementary analytical model that include a blackbody temperature.
+- `disk_BB` uniform disk with elongated and flattened variants
+- `ring_BB` uniform ring with elongated and flattened variants
+- `gaussian_BB` gaussian function with elongated and flattened variants
+
 > [!NOTE]
 > The supported model list is subject to change and will evolve in the future.
+> Models with a black-body temperature cannot be associated with grey ones.
 
 On the first screen shot, only science targets and their models are present; on the second screen shot, science, calibrator targets and their models are present.
 
@@ -962,12 +968,30 @@ The `Telescope FOV` indicates the overall field of view (telescope + spatial fil
 
 The `Model description` area gives you a description of the current elementary model and its parameters. The `Model Parameters` table let you edit each parameter of analytical models.
 
-When several models are defined for a target, the first model is always centered (x = y = 0 and fixed). Positions of other models can be edited using carthesian coordinates (x / y) or polar coordinates rho and theta (respectively separation and position angle following the astronomical convention from north through east) according to `edit positions` choice.
+When several  models are defined for a target, the first model is always centered (x = y = 0 and fixed). Positions of other models can be edited using carthesian coordinates (x / y) or polar coordinates rho and theta (respectively separation and position angle following the astronomical convention from north through east) according to `edit positions` choice.
 
 The `Normalize fluxes` button corrects values of the flux_weight parameter to have a total flux equal to 1.0.
 
+
 > [!NOTE]
 > The type of coordinates (carthesian or polar) can be defined in the [Preferences](#preferences) Window.
+
+
+When several (N) models with a black-body temperature are specified the resulting complex visibility is computed as:
+
+$V_{tot}(u,v,\lambda) = \frac{\sum_i^N S_i B(\lambda, T _i) V_i(u,v)}{\sum_i^N S_i B(\lambda, T _i)}$
+
+where $V_i(u,v)$ is the visibility of the ith component;
+
+and the flux emitted by each component corresponds to the Planck black-body function :  
+
+$B(\lambda, T) = \frac{2hc^2}{\lambda^5} \frac{1}{(\exp^{\frac{hc}{k\lambda T}} -1)}$
+
+$S_i$ represents the solid angle of the component.
+
+
+> [!IMPORTANT]
+> For the noise computation, in the absence of distance information, it is the magnitude of the object entered by the user in `Targets` tab (or retrieved via SIMBAD) that is taken into account and not the black-body flux.
 
 
 ##### User-defined model
