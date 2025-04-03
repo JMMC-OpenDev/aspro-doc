@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: Sep 17th 2024
+Date: Apr 4th 2024
 
 Authors:
 - Laurent BOURGES — JMMC / OSUG
@@ -23,9 +23,11 @@ Authors:
 
 
 Release history:
-- ASPRO 2 version 24.09 (September 2024): Improved UV Coverage panel (U-axis orientation, new live mode 'now') + made the 'Configuration Manager' available in all versions
+- ASPRO 2 version 25.03 (March 2025): Improved analytical models with black-body chromatic components (Temperature parameter) and GetStar 6.0 interoperability to get all fluxes with complete information on targets (SAMP)
+
 <details>
 <summary>Show previous revisions:</summary>
+- ASPRO 2 version 24.09 (September 2024): Improved UV Coverage panel (U-axis orientation, new live mode 'now') + made the 'Configuration Manager' available in all versions
 - ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
 - ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 - ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
@@ -58,61 +60,62 @@ Release history:
 </details>
 
 
-Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
+Here are the complete [release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
 
 
 ## Table of contents
 
 <!--toc-->
 - [ASPRO 2 User Manual](#aspro-2-user-manual)
-  - [Table of contents](#table-of-contents)
-  - [Description](#description)
-  - [Supported interferometers and instruments](#supported-interferometers-and-instruments)
-  - [Main functionalities](#main-functionalities)
-  - [Requirements](#requirements)
-  - [How to get and run ASPRO 2 ?](#how-to-get-and-run-aspro-2-)
-  - [Acknowledgement](#acknowledgement)
-  - [Guided tour](#guided-tour)
-    - [Main observation settings](#main-observation-settings)
-      - [Target definition](#target-definition)
-      - [Main settings](#main-settings)
-      - [Configuration(s)](#configurations)
-      - [Constraints](#constraints)
-      - [Status indicator](#status-indicator)
-    - [Targets tab](#targets-tab)
-    - [Interferometer sketch (Map tab)](#interferometer-sketch-map-tab)
-    - [Observability tab](#observability-tab)
-    - [UV coverage tab](#uv-coverage-tab)
-    - [OIFits Viewer tab](#oifits-viewer-tab)
-    - [OIFits output](#oifits-output)
-    - [Get Information about past observations](#get-information-about-past-observations)
-      - [Observability plot](#observability-plot)
-      - [UV Coverage plot](#uv-coverage-plot)
-    - [Multi configuration support](#multi-configuration-support)
-      - [Interferometer sketch](#interferometer-sketch)
-      - [Observability plot](#observability-plot-1)
-      - [UV Coverage plot](#uv-coverage-plot-1)
-      - [OIFits viewer](#oifits-viewer)
-    - [Target Editor](#target-editor)
-      - [Targets Tabbed Pane](#targets-tabbed-pane)
-      - [Models Tabbed Pane](#models-tabbed-pane)
-        - [Analytical model](#analytical-model)
-        - [User-defined model](#user-defined-model)
-        - [Polychromatic User-defined model](#polychromatic-user-defined-model)
-      - [Groups Tabbed Pane](#groups-tabbed-pane)
-    - [Preferences](#preferences)
-    - [JSkyCalc tool](#jskycalc-tool)
-  - [Interoperability](#interoperability)
-    - [SAMP in JMMC applications](#samp-in-jmmc-applications)
-    - [ASPRO 2 / SearchCal](#aspro-2--searchcal)
-    - [ASPRO 2 / LITpro](#aspro-2--litpro)
-    - [ASPRO 2 / OIFits Explorer](#aspro-2--oifits-explorer)
-    - [ASPRO 2 / A2P2](#aspro-2--a2p2)
-    - [ASPRO 2 - Export targets to VO Tools](#aspro-2---export-targets-to-vo-tools)
-    - [ASPRO 2 - Import targets from VO Tools](#aspro-2---import-targets-from-vo-tools)
-    - [ASPRO 2 - Import FITS image from VO Tools](#aspro-2---import-fits-image-from-vo-tools)
-  - [Support and change requests](#support-and-change-requests)
-  - [Sample files](#sample-files)
+    * [Table of contents](#table-of-contents)
+    * [Description](#description)
+    * [Supported interferometers and instruments](#supported-interferometers-and-instruments)
+    * [Main functionalities](#main-functionalities)
+    * [Requirements](#requirements)
+    * [How to get and run ASPRO 2 ?](#how-to-get-and-run-aspro-2-)
+    * [Acknowledgement](#acknowledgement)
+    * [Guided tour](#guided-tour)
+        * [Main observation settings](#main-observation-settings)
+            * [Target definition](#target-definition)
+            * [Main settings](#main-settings)
+            * [Configuration(s)](#configurations)
+            * [Constraints](#constraints)
+            * [Status indicator](#status-indicator)
+        * [Targets tab](#targets-tab)
+        * [Interferometer sketch (Map tab)](#interferometer-sketch-map-tab)
+        * [Observability tab](#observability-tab)
+        * [UV coverage tab](#uv-coverage-tab)
+        * [OIFits Viewer tab](#oifits-viewer-tab)
+        * [OIFits output](#oifits-output)
+        * [Get Information about past observations](#get-information-about-past-observations)
+            * [Observability plot](#observability-plot)
+            * [UV Coverage plot](#uv-coverage-plot)
+        * [Multi configuration support](#multi-configuration-support)
+            * [Interferometer sketch](#interferometer-sketch)
+            * [Observability plot](#observability-plot-1)
+            * [UV Coverage plot](#uv-coverage-plot-1)
+            * [OIFits viewer](#oifits-viewer)
+        * [Target Editor](#target-editor)
+            * [Targets Tabbed Pane](#targets-tabbed-pane)
+            * [Models Tabbed Pane](#models-tabbed-pane)
+                * [Analytical model](#analytical-model)
+                    * [Analytical model with black-body temperature](#analytical-model-with-black-body-temperature)
+                * [User-defined model](#user-defined-model)
+                * [Polychromatic User-defined model](#polychromatic-user-defined-model)
+            * [Groups Tabbed Pane](#groups-tabbed-pane)
+        * [Preferences](#preferences)
+        * [JSkyCalc tool](#jskycalc-tool)
+    * [Interoperability](#interoperability)
+        * [SAMP in JMMC applications](#samp-in-jmmc-applications)
+        * [ASPRO 2 / SearchCal](#aspro-2--searchcal)
+        * [ASPRO 2 / LITpro](#aspro-2--litpro)
+        * [ASPRO 2 / OIFits Explorer](#aspro-2--oifits-explorer)
+        * [ASPRO 2 / A2P2](#aspro-2--a2p2)
+        * [ASPRO 2 - Export targets to VO Tools](#aspro-2---export-targets-to-vo-tools)
+        * [ASPRO 2 - Import targets from VO Tools](#aspro-2---import-targets-from-vo-tools)
+        * [ASPRO 2 - Import FITS image from VO Tools](#aspro-2---import-fits-image-from-vo-tools)
+    * [Support and change requests](#support-and-change-requests)
+    * [Sample files](#sample-files)
 
 <!-- tocstop -->
 
@@ -124,7 +127,7 @@ This document will give general information on the new version of ASPRO named "A
 
 
 ## Supported interferometers and instruments
-- VLTI (Period 84 - 115)
+- VLTI (Period 84 - 116)
     - MIDI (2T) until Period 94
     - AMBER (3T) until Period 101
     - PIONIER (4T) starting from Period 86
@@ -944,14 +947,8 @@ Each target can have its own object model composed of several elementary analyti
 - `gaussian` distribution with elongated and flattened variants
 - `limb` darkened disk
 
-Additionnally one can use elementary analytical model that include a blackbody temperature.
-- `disk_BB` uniform disk with elongated and flattened variants
-- `ring_BB` uniform ring with elongated and flattened variants
-- `gaussian_BB` gaussian function with elongated and flattened variants
-
 > [!NOTE]
 > The supported model list is subject to change and will evolve in the future.
-> Models with a black-body temperature cannot be associated with grey ones.
 
 On the first screen shot, only science targets and their models are present; on the second screen shot, science, calibrator targets and their models are present.
 
@@ -977,13 +974,29 @@ The `Normalize fluxes` button corrects values of the flux_weight parameter to ha
 > The type of coordinates (carthesian or polar) can be defined in the [Preferences](#preferences) Window.
 
 
+###### Analytical model with black-body temperature
+
+Additionnally one can use elementary analytical model that include a black-body temperature.
+- `disk_BB` uniform disk with elongated and flattened variants
+- `ring_BB` uniform ring with elongated and flattened variants
+- `gaussian_BB` gaussian function with elongated and flattened variants
+
+> [!NOTE]
+> Models with a black-body temperature cannot be associated with grey ones.
+> Statistics on fLux ratios per component are displayed in the Status Indicator (log) to determine how components contribute to the total flux (hence visibility).
+
+On the following screen shot, the model is made of a resolved star (`disk_BB`) and a ring (`ring_BB`) with different temperatures and emitting surfaces:
+
+![Target editor with an black-body model](images/Aspro2-BB_Model.png)
+
+
 When several (N) models with a black-body temperature are specified the resulting complex visibility is computed as:
 
 $V_{tot}(u,v,\lambda) = \frac{\sum_i^N S_i B(\lambda, T _i) V_i(u,v)}{\sum_i^N S_i B(\lambda, T _i)}$
 
 where $V_i(u,v)$ is the visibility of the ith component;
 
-and the flux emitted by each component corresponds to the Planck black-body function :  
+and the flux emitted by each component corresponds to the Planck black-body function :
 
 $B(\lambda, T) = \frac{2hc^2}{\lambda^5} \frac{1}{(\exp^{\frac{hc}{k\lambda T}} -1)}$
 
@@ -992,6 +1005,10 @@ $S_i$ represents the solid angle of the component.
 
 > [!IMPORTANT]
 > For the noise computation, in the absence of distance information, it is the magnitude of the object entered by the user in `Targets` tab (or retrieved via SIMBAD) that is taken into account and not the black-body flux.
+
+With the previous black-body model, the OIFits viewer shows the squared visibility illustrating the chromatic effect (comma shape):
+
+![OIFits viewer with an black-body model](images/Aspro2-vis2-bb.png)
 
 
 ##### User-defined model

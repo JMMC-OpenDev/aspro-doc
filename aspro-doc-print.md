@@ -11,7 +11,7 @@
 # ASPRO 2 User Manual
 
 
-Date: Sep 17th 2024
+Date: Apr 4th 2024
 
 Authors:
 - Laurent BOURGES — JMMC / OSUG
@@ -23,9 +23,11 @@ Authors:
 
 
 Release history:
-- ASPRO 2 version 24.09 (September 2024): Improved UV Coverage panel (U-axis orientation, new live mode 'now') + made the 'Configuration Manager' available in all versions
+- ASPRO 2 version 25.03 (March 2025): Improved analytical models with black-body chromatic components (Temperature parameter) and GetStar 6.0 interoperability to get all fluxes with complete information on targets (SAMP)
+
 
 <p>Show previous revisions:</p>
+- ASPRO 2 version 24.09 (September 2024): Improved UV Coverage panel (U-axis orientation, new live mode 'now') + made the 'Configuration Manager' available in all versions
 - ASPRO 2 version 24.03 (March 2024): Implemented advanced OIFITS simulator (GRAVITY_FT / GPAO NGS VIS support)
 - ASPRO 2 version 23.09 (September 2023): Implemented wavelength interpolation and extrapolation of user-defined models (FITS cube)
 - ASPRO 2 version 23.03 (March 2023): Added the new VLTI Extended configuration providing baselines up to 200m
@@ -58,7 +60,7 @@ Release history:
 
 
 
-Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
+Here are the complete [release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
 
 
 ## Table of contents
@@ -97,6 +99,7 @@ Here are the [Release notes](http://www.jmmc.fr/aspro2/releasenotes.htm).
             * [Targets Tabbed Pane](#targets-tabbed-pane)
             * [Models Tabbed Pane](#models-tabbed-pane)
                 * [Analytical model](#analytical-model)
+                    * [Analytical model with black-body temperature](#analytical-model-with-black-body-temperature)
                 * [User-defined model](#user-defined-model)
                 * [Polychromatic User-defined model](#polychromatic-user-defined-model)
             * [Groups Tabbed Pane](#groups-tabbed-pane)
@@ -124,7 +127,7 @@ This document will give general information on the new version of ASPRO named "A
 
 
 ## Supported interferometers and instruments
-- VLTI (Period 84 - 115)
+- VLTI (Period 84 - 116)
     - MIDI (2T) until Period 94
     - AMBER (3T) until Period 101
     - PIONIER (4T) starting from Period 86
@@ -962,12 +965,50 @@ The `Telescope FOV` indicates the overall field of view (telescope + spatial fil
 
 The `Model description` area gives you a description of the current elementary model and its parameters. The `Model Parameters` table let you edit each parameter of analytical models.
 
-When several models are defined for a target, the first model is always centered (x = y = 0 and fixed). Positions of other models can be edited using carthesian coordinates (x / y) or polar coordinates rho and theta (respectively separation and position angle following the astronomical convention from north through east) according to `edit positions` choice.
+When several  models are defined for a target, the first model is always centered (x = y = 0 and fixed). Positions of other models can be edited using carthesian coordinates (x / y) or polar coordinates rho and theta (respectively separation and position angle following the astronomical convention from north through east) according to `edit positions` choice.
 
 The `Normalize fluxes` button corrects values of the flux_weight parameter to have a total flux equal to 1.0.
 
+
 > [!NOTE]
 > The type of coordinates (carthesian or polar) can be defined in the [Preferences](#preferences) Window.
+
+
+###### Analytical model with black-body temperature
+
+Additionnally one can use elementary analytical model that include a black-body temperature.
+- `disk_BB` uniform disk with elongated and flattened variants
+- `ring_BB` uniform ring with elongated and flattened variants
+- `gaussian_BB` gaussian function with elongated and flattened variants
+
+> [!NOTE]
+> Models with a black-body temperature cannot be associated with grey ones.
+> Statistics on fLux ratios per component are displayed in the Status Indicator (log) to determine how components contribute to the total flux (hence visibility).
+
+On the following screen shot, the model is made of a resolved star (`disk_BB`) and a ring (`ring_BB`) with different temperatures and emitting surfaces:
+
+![Target editor with an black-body model](images/Aspro2-BB_Model.png)
+
+
+When several (N) models with a black-body temperature are specified the resulting complex visibility is computed as:
+
+$V_{tot}(u,v,\lambda) = \frac{\sum_i^N S_i B(\lambda, T _i) V_i(u,v)}{\sum_i^N S_i B(\lambda, T _i)}$
+
+where $V_i(u,v)$ is the visibility of the ith component;
+
+and the flux emitted by each component corresponds to the Planck black-body function :
+
+$B(\lambda, T) = \frac{2hc^2}{\lambda^5} \frac{1}{(\exp^{\frac{hc}{k\lambda T}} -1)}$
+
+$S_i$ represents the solid angle of the component.
+
+
+> [!IMPORTANT]
+> For the noise computation, in the absence of distance information, it is the magnitude of the object entered by the user in `Targets` tab (or retrieved via SIMBAD) that is taken into account and not the black-body flux.
+
+With the previous black-body model, the OIFits viewer shows the squared visibility illustrating the chromatic effect (comma shape):
+
+![OIFits viewer with an black-body model](images/Aspro2-vis2-bb.png)
 
 
 ##### User-defined model
