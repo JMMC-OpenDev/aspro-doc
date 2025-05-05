@@ -114,6 +114,9 @@ Here are the complete [release notes](http://www.jmmc.fr/aspro2/releasenotes.htm
         * [ASPRO 2 - Export targets to VO Tools](#aspro-2---export-targets-to-vo-tools)
         * [ASPRO 2 - Import targets from VO Tools](#aspro-2---import-targets-from-vo-tools)
         * [ASPRO 2 - Import FITS image from VO Tools](#aspro-2---import-fits-image-from-vo-tools)
+    * [ASPRO 2 - Command Line Interface](#aspro-2---command-line-interface)
+        * [Command line syntax](#command-line-syntax)
+        * [Command line arguments](#command-line-arguments)
     * [Support and change requests](#support-and-change-requests)
     * [Sample files](#sample-files)
 
@@ -1357,6 +1360,54 @@ Here is a sample VOTable file describing all possible parameters and columns: [A
 ASPRO 2 supports the standard 'image.load.fits' SAMP message to import one FITS image or cube from any VO Tool (AMHRA, OImaging, LITpro, DS9 ...).
 
 As described in the [User Model](#user-defined-model) section, the FITS image or cube must provide mandatory keywords (increments, units...) to be compatible in terms of spatial and spectral resolution with the observation setup (instrument, baselines).
+
+
+## ASPRO 2 - Command Line Interface
+ASPRO2 provides a simple command line interface to compute interferometric observables from one input OIFits file and a user model image (FITS cube) and produce another OIFits file containing  computed observables from the model at the spatial frequencies (UV plan) given by the input OIFits file (typically an observation data file).
+
+As it does not perform the noise modelling, errors are left undefined (NaN), but chi2 are computed too.
+
+### Command line syntax
+The following command starts ASPRO2 in shell mode (no GUI) with the argument `-process` and its mandatory arguments `-input`, `-output` and `-image` to give full paths to the OIFits files and the FITS image file.
+
+`java -jar Aspro2-Version.jar -process -input <input OIFits file> -image <fits file> -output <output OIFits file>`
+
+
+Here is a sample script showing several processing cases with optional arguments: [test-process.sh](https://github.com/JMMC-OpenDev/aspro/blob/master/test-process.sh)
+
+### Command line arguments
+The following command gives the full list of arguments (default values are given within brackets):
+
+`java -jar Aspro2-Version.jar -help`
+
+```
+---------------------------------- Arguments help ------------------------------
+| Key          Value           Description                                     |
+|------------------------------------------------------------------------------|
+| [-h]                         Show the options help                           |
+| [-h|-help]                   Show arguments help                             |
+| [-loggui]                    Show the logging tool                           |
+| [-v]         [0|1|2|3|4|5]   Define console logging level                    |
+| [-version]                   Show application name and version               |
+| [-open <file>]               Open the given file (if supported)              |
+|------------------------------------------------------------------------------|
+| [-process]                   process an OIFITS file and model to compute observables [SHELL]    |
+| [-image]                     the input FITS model to process [SHELL]    |
+| [-input]                     the input OIFITS file to process [SHELL]    |
+| [-output]                    the output OIFITS file to write [SHELL]    |
+| [-fast]                      [true] to ignore useless data; false to have highest precision [SHELL]    |
+| [-fastError]                 optional Fast mode error in percents [0 - 10 %]; 1% by default [SHELL]    |
+| [-supersampling]             supersampling per spectral channel [5] [SHELL]    |
+| [-math]                      Math mode: ['FAST'] faster, 'DEFAULT' highest accuracy or 'QUICK' fastest BUT low accuracy [SHELL]    |
+| [-scale]                     optional image scale (increment) expressed in milli-arcsec (mas) [SHELL]    |
+| [-rotate]                    optional image rotation expressed in degrees [SHELL]    |
+| [-apodize]                   [true] to perform image apodization; false to disable [SHELL]    |
+| [-diameter]                  optional telescope diameter (meters) used by image apodization [SHELL]    |
+|------------------------------------------------------------------------------|
+LOG LEVELS : 0 = OFF, 1 = SEVERE, 2 = WARNING, 3 = INFO, 4 = FINE, 5 = ALL
+```
+
+These optional arguments correspond to ASPRO2's [Preferences](#preferences) used by [User-defined model](#user-defined-model) processing (fast mode & error, supersampling, scale & rotate model image, apodization).
 
 
 ## Support and change requests
