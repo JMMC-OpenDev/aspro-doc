@@ -1112,7 +1112,7 @@ The model gives a list of images with attributes:
 Given an instrument and a specific instrumental mode, for each channel ($\lambda_i$, $d\lambda_i$):
 - $Vis(\lambda_i) = \frac{FT [ Model(\lambda_i) ]}{Flux [ Model(\lambda_i) ]}$
 
-If the model is mono-chromatic or a single model image A corresponds to the detector channel at lambda_i (channel and image bandwidth overlap or the closest image if no interpolation or extrapolation), then it simplifies to:
+If the model is mono-chromatic or a single model image A corresponds to the detector channel at lambda_i (channel and image bandwidth overlap OR the closest image if interpolation disabled or extrapolation enabled), then it simplifies to:
 - $I(\lambda_i) = I_A = F_A * IN_A$
 - $F(\lambda_i) = F_A$
 - $Vis(\lambda_i) = \frac{FT [ I_A ]}{F_A} = FT [ IN_A ]$
@@ -1133,6 +1133,7 @@ where $Fm$ is the integrated flux $Fi$ over the band / band width:
 $$Fm = \frac{ \int_{\lambda_{Bmin}}^{\lambda_{Bmax}} Fi.\delta\lambda }{\lambda_{Bmax} - \lambda_{Bmin}}$$
 
 > [!NOTE]
+> - Extrapolation allows to use the first and last image of the polychromatic image model to compute visibilities for detector wavelengths smaller and larger than provided by the model.
 > - Interpolation and Extrapolation on user-models can be enabled / disabled in the [Preferences](#preferences) Window.
 
 
@@ -1363,8 +1364,9 @@ As described in the [User Model](#user-defined-model) section, the FITS image or
 
 
 ## ASPRO 2 - Command Line Interface
-ASPRO2 provides a simple command line interface to compute interferometric observables from one input OIFits file and a user model image (FITS cube) and produce another OIFits file containing  computed observables from the model at the spatial frequencies (UV plan) given by the input OIFits file (typically an observation data file).
+ASPRO2 provides a simple command line interface to compute interferometric observables from one input OIFits file and a user model image (FITS cube) and produce another OIFits file containing computed observables from the model at the spatial frequencies (UV plan) given by the input OIFits file (typically an observation data file).
 
+If the given user model image's wavelength range is smaller than the instrumental wavelength range (OI_WAVELENGTH effwave range), then observables can not be computed and set to NaN (extrapolation disabled by default).
 As it does not perform the noise modelling, errors are left undefined (NaN), but chi2 are computed too.
 
 ### Command line syntax
@@ -1403,11 +1405,15 @@ The following command gives the full list of arguments (default values are given
 | [-rotate]                    optional image rotation expressed in degrees [SHELL]    |
 | [-apodize]                   [true] to perform image apodization; false to disable [SHELL]    |
 | [-diameter]                  optional telescope diameter (meters) used by image apodization [SHELL]    |
+| [-modelInterpol]             [true] to perform linear interpolation between FITS cube images; false to disable [SHELL]    |
+| [-modelExtrapol]             true to compute spectral channels out of the FITS cube wavelength range; [false] to disable [SHELL]    |
 |------------------------------------------------------------------------------|
 LOG LEVELS : 0 = OFF, 1 = SEVERE, 2 = WARNING, 3 = INFO, 4 = FINE, 5 = ALL
 ```
 
-These optional arguments correspond to ASPRO2's [Preferences](#preferences) used by [User-defined model](#user-defined-model) processing (fast mode & error, supersampling, scale & rotate model image, apodization).
+These optional arguments correspond to ASPRO2's [Preferences](#preferences) used by [User-defined model](#user-defined-model) processing (fast mode & error, supersampling, scale & rotate model image, apodization, fits cube interpolation & extrapolation). 
+
+See [Polychromatic User-defined model](#polychromatic-user-defined-model)
 
 
 ## Support and change requests
